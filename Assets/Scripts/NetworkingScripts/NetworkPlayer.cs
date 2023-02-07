@@ -20,14 +20,12 @@ public class NetworkPlayer : MonoBehaviour
     void Start()
     {
         pv = GetComponent<PhotonView>();
-        //XRRig rig = FindObjectOfType<XRRig>();
         XROrigin origin = FindObjectOfType<XROrigin>();
         headRig = origin.transform.Find("Camera Offset/Main Camera");
         leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(pv.IsMine)
