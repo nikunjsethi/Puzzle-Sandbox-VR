@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Nikunj_Multiplayer.unity
     guid: 4d97cef9d972a3c4892bf77cef4ddc70
+  - enabled: 1
+    path: Assets/Scenes/TestTeleporter.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c3a63f5e54b199b44a8a0c2561c86e79, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e37451a060c0bc14b9ff3cf696a186b0, type: 2}
