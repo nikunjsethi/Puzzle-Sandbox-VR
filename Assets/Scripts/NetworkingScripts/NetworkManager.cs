@@ -6,6 +6,10 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    // constants that can be used by other classes
+    public static string ROOM_NAME = "PuzzleHub";
+    public static int MAX_NUM_PLAYERS = 10;
+
     void Start()
     {
         ConnectToServer();
@@ -22,10 +26,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Connected to Server.");
         base.OnConnectedToMaster();
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 10;
+        roomOptions.MaxPlayers = (byte)MAX_NUM_PLAYERS;
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(ROOM_NAME, roomOptions, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
