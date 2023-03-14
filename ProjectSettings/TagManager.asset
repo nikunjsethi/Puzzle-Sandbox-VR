@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - StartingPoints
+  - Hide
+  - CubeTrigger
+  - Interactable
   layers:
   - Default
   - TransparentFX

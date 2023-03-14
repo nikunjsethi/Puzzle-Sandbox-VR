@@ -16,16 +16,39 @@ public class NetworkPlayer : MonoBehaviour
     private Transform headRig;
     private Transform leftHandRig;
     private Transform rightHandRig;
+
+    public List<GameObject> instantiationPoint;
+    public List<GameObject> cubeDisable;
     // Start is called before the first frame update
     void Start()
     {
         pv = GetComponent<PhotonView>();
+        instantiationPoint = new List<GameObject>();
+        instantiationPoint.AddRange(GameObject.FindGameObjectsWithTag("StartingPoints"));
+        cubeDisable = new List<GameObject>();
+        cubeDisable.AddRange(GameObject.FindGameObjectsWithTag("Hide"));
         XROrigin origin = FindObjectOfType<XROrigin>();
         headRig = origin.transform.Find("Camera Offset/Main Camera");
         leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
+        int playerCount = PhotonNetwork.CountOfPlayers;
+        Debug.Log("Player count is : " + playerCount);
+        origin.transform.position = instantiationPoint[playerCount].transform.position;
+        origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
+        pv.RPC("RPC_Array_Update",RpcTarget.AllBuffered);
+        //int randomNumber = Random.Range(0, cubeDisable.Count);
+        //Debug.Log("Randon value : " + randomNumber);
+        //PhotonNetwork.Destroy(cubeDisable[randomNumber]);
+        //cubeDisable.RemoveAt(randomNumber);
     }
-
+    [PunRPC]
+    void RPC_Array_Update()
+    {
+        int randomNumber = Random.Range(0, cubeDisable.Count);
+        Debug.Log("Randon value : " + randomNumber);
+        PhotonNetwork.Destroy(cubeDisable[randomNumber]);
+        cubeDisable.RemoveAt(randomNumber);
+    }
     void Update()
     {
         if(pv.IsMine)

@@ -276,6 +276,8 @@ MonoBehaviour:
   Head: {fileID: 8465213842846965438}
   LeftHand: {fileID: 7773717367998211665}
   RightHand: {fileID: 874843158674469878}
+  instantiationPoint: []
+  cubeDisable: []
 --- !u!114 &5432282646331160005
 MonoBehaviour:
   m_ObjectHideFlags: 0
