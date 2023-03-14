@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
 
         // make it so the game manager doesn't get destroyed when the scene moves
         DontDestroyOnLoad(this.gameObject);
-
         // game objects that should not get destoryed (XR Origin probably among others)
         for (int i = 0; i < necessaryGameObjects.Length; i++)
         {

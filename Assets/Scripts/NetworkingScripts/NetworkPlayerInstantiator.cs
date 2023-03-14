@@ -7,13 +7,14 @@ using System.Linq;
 
 public class NetworkPlayerInstantiator : MonoBehaviourPunCallbacks
 {
-    
+    public List<Transform> instantiationPoints;
     // Keep the instantiated player object around
     private GameObject spawnedPlayerPrefab;
 
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        int playerCount = PhotonNetwork.CountOfPlayers;
         spawnedPlayerPrefab = PhotonNetwork.Instantiate("NewPlayer", transform.position, transform.rotation);
 
         // testing the id information for the photon view of this object after it is created
