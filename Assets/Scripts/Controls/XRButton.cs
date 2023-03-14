@@ -7,6 +7,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// </summary>
 public class XRButton : XRBaseInteractable
 {
+    // constant values for this script
+    private const float BUTTON_IMPULSE_STRENGTH = 0.5f;
+    private const float BUTTON_IMPULSE_LENGTH = 0.15f;
+
     [Tooltip("The transform of the visual component of the button")]
     public Transform buttonTransform = null;
 
@@ -118,6 +122,8 @@ public class XRButton : XRBaseInteractable
             if(inPosition)
             {
                 OnPress.Invoke();
+                XRBaseControllerInteractor xrControllerUsed = (XRBaseControllerInteractor)hoverInteractor;
+                xrControllerUsed.SendHapticImpulse(BUTTON_IMPULSE_STRENGTH, BUTTON_IMPULSE_LENGTH);
             }
             else
             {

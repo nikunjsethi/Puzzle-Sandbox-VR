@@ -1,5 +1,7 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +12,13 @@ public class GameManager : MonoBehaviour
 
     // serialized fields available in the editor for use in this script
     [Header("Data we don't want destroyed when scripts are swapped")]
+    [SerializeField] List<GameObject> baseTeleportLocations;
     [SerializeField] GameObject[] necessaryGameObjects;
     [SerializeField] GameObject xrOrigin;                       // saving this separately as we need to teleport it
 
-    [Header("Mini-game scenes for loading")]
+    [Header("Data for loading scenes and teleporting")]
     [SerializeField] string[] teleportSceneNames;
+    [SerializeField] TMP_Text teleportText;
 
     // private variables used by this script
     private AsyncOperation async;
@@ -44,6 +48,9 @@ public class GameManager : MonoBehaviour
         // set up the teleport
         // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
         StartCoroutine(LoadLevel(teleportSceneNames[0]));
+
+        // for debugging, adding the player id and information to the teleport text for now
+        teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
         // debug log
         Debug.Log("Loading level TestTeleporter");
@@ -78,10 +85,27 @@ public class GameManager : MonoBehaviour
         // set the active scene to the new puzzle room
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentSceneName));
 
-        // teleport the player(s) to the start location of the puzzle scene (each puzzle scene should have this)
-        // TODO: Need to figure out how to not teleport players on top of each other.
-        GameObject startLocation = GameObject.Find("StartLocation");
-        xrOrigin.transform.position = startLocation.transform.position;
+        // teleport the player(s) to the start location of the puzzle scene for this systems player
+        // (each puzzle scene should have 10 locations)
+        Debug.Log("Actor ID: " + PhotonNetwork.LocalPlayer.ActorNumber);
+        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
+
+        // keep the locations in the range of the available teleport locations
+        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
+        {
+            playerTeleportPos = 0;
+        }
+
+        // TODO: Need to figure out rotation (or use teleport pads instead of empty objects)
+        GameObject startLocation = GameObject.Find("StartLocation" + playerTeleportPos);
+        if (startLocation == null)
+        {
+            Debug.Log("No start location found for player with ID: " + PhotonNetwork.LocalPlayer.ActorNumber);
+        }
+        else
+        {
+            xrOrigin.transform.position = startLocation.transform.position;
+        }
 
         // prnt out the location
         Debug.Log(currentSceneName + " loaded. Teleporting!");
@@ -107,8 +131,16 @@ public class GameManager : MonoBehaviour
         currentSceneName = MAIN_SCENE_NAME;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentSceneName));
 
-        // teleport the player(s)
-        GameObject baseLocation = GameObject.Find("BaseTeleportLocation");
+        // teleport the player(s) to their spot in the base hub
+        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
+
+        // keep the locations in the range of the available teleport locations
+        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
+        {
+            playerTeleportPos = 0;
+        }
+
+        GameObject baseLocation = baseTeleportLocations[playerTeleportPos];
         xrOrigin.transform.position = baseLocation.transform.position;
 
         // now wait for the async operation to complete
