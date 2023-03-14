@@ -45,6 +45,7 @@ MonoBehaviour:
   - Update
   - RPC_Array_Update
   - RPC_PlayerCount
+  - RPC_ColorChanger
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
