@@ -10,7 +10,7 @@ public class CubeInteracter : MonoBehaviour
         if(other.CompareTag("Interactable"))
         {
             PhotonNetwork.Destroy(other.gameObject);
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }
