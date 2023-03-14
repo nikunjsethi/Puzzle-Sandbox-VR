@@ -9,6 +9,9 @@ TagManager:
   - Hide
   - CubeTrigger
   - Interactable
+  - LevelManager
+  - Symbol0
+  - Symbol1
   layers:
   - Default
   - TransparentFX
