@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - LevelManager
+  - Symbol0
+  - Symbol1
   layers:
   - Default
   - TransparentFX
