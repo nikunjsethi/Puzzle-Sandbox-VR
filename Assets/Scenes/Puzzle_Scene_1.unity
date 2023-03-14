@@ -1593,7 +1593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e07cae0ab7e34dbaad44a16473de355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAmount: 0
   spawnPoints:
   - {fileID: 1322593319}
   - {fileID: 0}
@@ -1609,10 +1608,10 @@ MonoBehaviour:
   laserStart: {fileID: 1030288980}
   lerpSpeed: 0.3
   rotSpeed: 10
-  line: {fileID: 0}
+  line: {fileID: 617774850}
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
   status: 0
   requiredHits: 0
   changingDisplays: 0
@@ -1627,17 +1626,6 @@ MonoBehaviour:
   - {fileID: 154536685}
   - {fileID: 1491890261}
   - {fileID: 1121026570}
-  spawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &1030288978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3149,6 +3137,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 771252f1234324d359ffc45113bc18e7, type: 3}
   m_PrefabInstance: {fileID: 2044717372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2044717374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 771252f1234324d359ffc45113bc18e7, type: 3}
+  m_PrefabInstance: {fileID: 2044717372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2044717375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044717374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5355854, y: 7.836837, z: 7.03078}
+  m_Center: {x: -0.026959866, y: 1.7130316, z: 0}
 --- !u!1001 &2112115880
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class LaserControl : MonoBehaviour
 {
-    public int playerAmount;
+    private int playerAmount;
     public Transform[] spawnPoints = new Transform[10];
 
     //Controls
@@ -46,6 +47,8 @@ public class LaserControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAmount = PhotonNetwork.CountOfPlayers;
+
         originalRotation = laserBowl.rotation;
         startSpeed = 0;
         targetSpeed = rotSpeed;
@@ -88,7 +91,7 @@ public class LaserControl : MonoBehaviour
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
+                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
 
                 break;
             case 1:
@@ -100,22 +103,19 @@ public class LaserControl : MonoBehaviour
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
+                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
 
                 break;
 
             case 2:
                 line.material.color = Color.red;
 
-                //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
-
                 //Speed Lerp
                 T = Mathf.InverseLerp(0, distanceToCover, laserBowl.rotation.z);
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
+                laserBowl.Rotate(0f, currentRotSpeed * Time.deltaTime, 0f);
 
 
                 if (laserBowl.rotation.z <= 1f || laserBowl.rotation.z >= 359f)
@@ -166,7 +166,6 @@ public class LaserControl : MonoBehaviour
                     //Speed up the laser
                     T *= 1 / rotMultiplier;
                     targetSpeed *= rotMultiplier;
-
 
 
                     //Change color of display
