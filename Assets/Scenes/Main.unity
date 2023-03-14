@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 19614107}
   - component: {fileID: 19614106}
   - component: {fileID: 19614109}
+  - component: {fileID: 19614111}
+  - component: {fileID: 19614110}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -177,7 +179,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 19614111}
+  - {fileID: 19614110}
   sceneViewId: 13
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -214,6 +218,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &19614110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19614104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &19614111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19614104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &32865842
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +471,7 @@ GameObject:
   - component: {fileID: 126173598}
   - component: {fileID: 126173597}
   - component: {fileID: 126173601}
+  - component: {fileID: 126173602}
   m_Layer: 0
   m_Name: FillCube (11)
   m_TagString: Hide
@@ -475,7 +512,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 126173601}
+  - {fileID: 126173602}
   sceneViewId: 23
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -558,6 +597,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &126173602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126173595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!65 &135832634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -598,6 +653,7 @@ GameObject:
   - component: {fileID: 308202483}
   - component: {fileID: 308202482}
   - component: {fileID: 308202486}
+  - component: {fileID: 308202487}
   m_Layer: 0
   m_Name: FillCube (10)
   m_TagString: Hide
@@ -640,6 +696,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 308202486}
+  - {fileID: 308202487}
   sceneViewId: 24
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -722,6 +779,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &308202487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308202480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &342995499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6931969405123308736, guid: 1d1ea876b3617ab44a86411acdded67d, type: 3}
@@ -1493,6 +1566,7 @@ GameObject:
   - component: {fileID: 625849475}
   - component: {fileID: 625849474}
   - component: {fileID: 625849478}
+  - component: {fileID: 625849479}
   m_Layer: 0
   m_Name: FillCube (15)
   m_TagString: Hide
@@ -1617,6 +1691,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &625849479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625849472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &633062633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1949,7 @@ GameObject:
   - component: {fileID: 827166475}
   - component: {fileID: 827166474}
   - component: {fileID: 827166478}
+  - component: {fileID: 827166479}
   m_Layer: 0
   m_Name: FillCube (13)
   m_TagString: Hide
@@ -1982,6 +2073,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &827166479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827166472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &867094859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,6 +2103,7 @@ GameObject:
   - component: {fileID: 867094862}
   - component: {fileID: 867094861}
   - component: {fileID: 867094865}
+  - component: {fileID: 867094866}
   m_Layer: 0
   m_Name: FillCube (17)
   m_TagString: Hide
@@ -2036,7 +2144,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 867094865}
   sceneViewId: 29
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2119,6 +2228,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &867094866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867094859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &871447181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2371,8 @@ GameObject:
   - component: {fileID: 875147775}
   - component: {fileID: 875147774}
   - component: {fileID: 875147777}
+  - component: {fileID: 875147779}
+  - component: {fileID: 875147778}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -2324,6 +2451,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &875147778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875147772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &875147779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875147772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &884874626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,6 +2986,7 @@ GameObject:
   - component: {fileID: 982029284}
   - component: {fileID: 982029283}
   - component: {fileID: 982029287}
+  - component: {fileID: 982029288}
   m_Layer: 0
   m_Name: FillCube (16)
   m_TagString: Hide
@@ -2867,7 +3027,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 982029287}
   sceneViewId: 31
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2950,6 +3111,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &982029288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982029281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &993128049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3140,8 @@ GameObject:
   - component: {fileID: 993128052}
   - component: {fileID: 993128051}
   - component: {fileID: 993128054}
+  - component: {fileID: 993128056}
+  - component: {fileID: 993128055}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -3041,6 +3220,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &993128055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993128049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &993128056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993128049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &1012351117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3610,6 +3821,7 @@ GameObject:
   - component: {fileID: 1179843677}
   - component: {fileID: 1179843676}
   - component: {fileID: 1179843680}
+  - component: {fileID: 1179843681}
   m_Layer: 0
   m_Name: FillCube (18)
   m_TagString: Hide
@@ -3650,7 +3862,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1179843680}
   sceneViewId: 32
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3733,6 +3946,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1179843681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179843674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &1223230440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,6 +3975,8 @@ GameObject:
   - component: {fileID: 1223230443}
   - component: {fileID: 1223230442}
   - component: {fileID: 1223230445}
+  - component: {fileID: 1223230447}
+  - component: {fileID: 1223230446}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -3824,6 +4055,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1223230446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223230440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1223230447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223230440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &1227212603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3907,6 +4170,8 @@ GameObject:
   - component: {fileID: 1229856044}
   - component: {fileID: 1229856043}
   - component: {fileID: 1229856046}
+  - component: {fileID: 1229856048}
+  - component: {fileID: 1229856047}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -3948,7 +4213,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1229856048}
+  - {fileID: 1229856047}
   sceneViewId: 14
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3985,6 +4252,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1229856047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229856041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1229856048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229856041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1282539470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,6 +4297,8 @@ GameObject:
   - component: {fileID: 1282539473}
   - component: {fileID: 1282539472}
   - component: {fileID: 1282539475}
+  - component: {fileID: 1282539477}
+  - component: {fileID: 1282539476}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -4076,6 +4377,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1282539476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282539470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1282539477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282539470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1336149339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,6 +4423,7 @@ GameObject:
   - component: {fileID: 1336149342}
   - component: {fileID: 1336149341}
   - component: {fileID: 1336149345}
+  - component: {fileID: 1336149346}
   m_Layer: 0
   m_Name: FillCube (12)
   m_TagString: Hide
@@ -4213,6 +4547,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1336149346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336149339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &1344782623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,6 +4787,8 @@ GameObject:
   - component: {fileID: 1487016432}
   - component: {fileID: 1487016431}
   - component: {fileID: 1487016434}
+  - component: {fileID: 1487016436}
+  - component: {fileID: 1487016435}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -4515,6 +4867,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1487016435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487016429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1487016436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487016429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1496317899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4631,6 +5015,8 @@ GameObject:
   - component: {fileID: 1614906572}
   - component: {fileID: 1614906571}
   - component: {fileID: 1614906574}
+  - component: {fileID: 1614906576}
+  - component: {fileID: 1614906575}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -4709,6 +5095,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1614906575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614906569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1614906576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614906569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1618897944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4896,6 +5314,8 @@ GameObject:
   - component: {fileID: 1817454707}
   - component: {fileID: 1817454706}
   - component: {fileID: 1817454709}
+  - component: {fileID: 1817454711}
+  - component: {fileID: 1817454710}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -4974,6 +5394,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1817454710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817454704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1817454711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817454704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1822589007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,6 +5439,8 @@ GameObject:
   - component: {fileID: 1822589010}
   - component: {fileID: 1822589009}
   - component: {fileID: 1822589012}
+  - component: {fileID: 1822589014}
+  - component: {fileID: 1822589013}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: CubeTrigger
@@ -5065,6 +5519,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1822589013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822589007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &1822589014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822589007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1824493005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5891,7 @@ GameObject:
   - component: {fileID: 1957444706}
   - component: {fileID: 1957444705}
   - component: {fileID: 1957444709}
+  - component: {fileID: 1957444710}
   m_Layer: 0
   m_Name: FillCube (14)
   m_TagString: Hide
@@ -5529,6 +6016,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1957444710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957444703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &2114730714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5543,6 +6046,7 @@ GameObject:
   - component: {fileID: 2114730717}
   - component: {fileID: 2114730716}
   - component: {fileID: 2114730720}
+  - component: {fileID: 2114730721}
   m_Layer: 0
   m_Name: FillCube (19)
   m_TagString: Hide
@@ -5667,6 +6171,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &2114730721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114730714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &2116663954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5795845215311118915, guid: 1d1ea876b3617ab44a86411acdded67d, type: 3}
