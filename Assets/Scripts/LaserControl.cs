@@ -10,7 +10,7 @@ public class LaserControl : MonoBehaviour
     //Controls
     public Transform laserBowl;
     public Transform laserStart;
-    
+
     [Header("Rotation")]
     [Range(0, 1f)]
     private float T = 0;
@@ -28,10 +28,12 @@ public class LaserControl : MonoBehaviour
 
     //Line Renderer for Laser
     [Header("Line")]
+    private Transform forLineCheck;
     public LineRenderer line;
     public LayerMask layer;
     public int status = 0;
     private bool hitRecorded = false;
+    private float lineDist;
 
     //Display for hits
     private int hitAmount = 0;
@@ -39,10 +41,6 @@ public class LaserControl : MonoBehaviour
     public int changingDisplays;
     public List<HitDisplays> displays = new List<HitDisplays>();
     private float distances;
-
-    [Header("Spawns")]
-    public Transform[] spawns = new Transform[10];
-    private List<int> spawnCombo = new List<int>();
 
 
     // Start is called before the first frame update
@@ -68,69 +66,11 @@ public class LaserControl : MonoBehaviour
         //Set Direction
         direction = possibilities[0];
 
-        for (int j = 0; j < playerAmount; j++)
-        {
-            if (j == 0)
-            {
-                int index = Random.Range(0, spawns.Length);
-                spawnCombo.Add(index);
-            }
-            else if (j > 0 && j < 5)
-            {
-                List<int> placesToChoose = new List<int>();
-
-                for (int y = 0; y < spawnCombo.Count; y++)
-                {
-                    int choice1 = spawnCombo[y] + 2;
-                    int choice2 = spawnCombo[y] - 2;
-
-                    if (choice1 > spawns.Length)
-                        choice1 -= spawns.Length;
-
-                    if (choice2 < 0)
-                        choice2 += spawns.Length;
-
-                    if (!spawnCombo.Contains(choice1))
-                        placesToChoose.Add(choice1);
-                    if (!spawnCombo.Contains(choice2))
-                        placesToChoose.Add(choice2);
-                }
-
-                int index = Random.Range(0, placesToChoose.Count);
-                spawnCombo.Add(placesToChoose[index]);
-            }
-            else
-            {
-                List<int> placesToFill = new List<int>();
-
-                for (int y = 0; y < spawns.Length; y++)
-                {
-                    if (!spawnCombo.Contains(y))
-                        placesToFill.Add(y);
-                    else
-                        continue;
-                }
-                    
-
-                int l = playerAmount - spawnCombo.Count;
-
-                for (int i = 0; i < l; i++)
-                {
-                    int index = Random.Range(0, placesToFill.Count);
-
-                    spawnCombo.Add(placesToFill[index]);
-                    placesToFill.Remove(placesToFill[index]);
-                }        
-            }
-        }
-
-        //Send data to spawner
-
         //Set Line
-        float distance = 
+        lineDist = Mathf.Abs(Vector3.Distance(laserStart.position, forLineCheck.position));
         line.positionCount = 2;
         line.SetPosition(0, laserStart.position);
-        line.SetPosition(1, laserStart.position + 100f * laserStart.right);
+        line.SetPosition(1, laserStart.position + lineDist * laserStart.right);
 
         changingDisplays = Mathf.FloorToInt(displays.Count / requiredHits);
     }
@@ -177,7 +117,7 @@ public class LaserControl : MonoBehaviour
                 //Rotation for the laser
                 laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
 
-              
+
                 if (laserBowl.rotation.z <= 1f || laserBowl.rotation.z >= 359f)
                 {
                     laserBowl.rotation = originalRotation;
@@ -198,7 +138,6 @@ public class LaserControl : MonoBehaviour
         //Set direction
         direction = directions[hitAmount];
 
-        
         //Set Speed
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
@@ -207,50 +146,56 @@ public class LaserControl : MonoBehaviour
         RaycastHit hitInfo;
         bool hit = Physics.Raycast(ray, out hitInfo, 100f, layer);
 
-        //If hit is detected and the Laser is not returning to the original spot
-        if (hit && status >= 0 && status < 2 && !hitRecorded)
+        if (hit)
         {
-            //If we hit the correct side
-            if (hitInfo.collider.CompareTag("Symbol" + status))
+            Vector3 hitPos = hitInfo.point;
+            line.SetPosition(1, hitPos);
+
+            if (status < 2 && !hitRecorded && (hitInfo.collider.CompareTag("Symbol0") || hitInfo.collider.CompareTag("Symbol1")))
             {
-
-                hitRecorded = true;
-                //Add the hit
-                hitAmount++;
-
-                rotMultiplier = Random.Range(2, 9) * 0.25f;
-
-                //Speed up the laser
-                T *= 1 / rotMultiplier;
-                targetSpeed *= rotMultiplier;
-
-                
-
-                //Change color of display
-                for (int i = (hitAmount - 1) * changingDisplays; i < hitAmount * changingDisplays; i++)
+                //If we hit the correct side
+                if (hitInfo.collider.CompareTag("Symbol" + status))
                 {
-                    displays[i].changing = true;
+
+                    hitRecorded = true;
+                    //Add the hit
+                    hitAmount++;
+
+                    rotMultiplier = Random.Range(2, 9) * 0.25f;
+
+                    //Speed up the laser
+                    T *= 1 / rotMultiplier;
+                    targetSpeed *= rotMultiplier;
+
+
+
+                    //Change color of display
+                    for (int i = (hitAmount - 1) * changingDisplays; i < hitAmount * changingDisplays; i++)
+                    {
+                        displays[i].changing = true;
+                    }
+
+
                 }
-                
+                //If we didnt hit the correct side
+                else
+                {
 
-            }
-            //If we didnt hit the correct side
-            else if (!hitInfo.collider.CompareTag("Symbol" + status))
-            {
+                    hitRecorded = true;
+                    distances = (laserBowl.rotation.z - originalRotation.z) / hitAmount;
+                    direction = -1;
+                    distanceToCover = laserBowl.rotation.z;
+                    status = 2;
 
-                hitRecorded = true;
-                distances = (laserBowl.rotation.z - originalRotation.z) / hitAmount;
-                direction = -1;
-                distanceToCover = laserBowl.rotation.z;
-                status = 2;
-
+                }
             }
         }
-        else if (!hit && status >= 0 && status < 2 && hitRecorded)
+        else
         {
-            hitRecorded = false;
+            line.SetPosition(1, laserStart.position + lineDist * laserStart.right);
+
+            if (status < 2 && hitRecorded)
+                hitRecorded = false;
         }
-
     }
-
 }
