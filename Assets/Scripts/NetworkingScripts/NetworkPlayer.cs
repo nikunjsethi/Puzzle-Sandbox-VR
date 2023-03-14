@@ -23,31 +23,34 @@ public class NetworkPlayer : MonoBehaviour
     void Start()
     {
         pv = GetComponent<PhotonView>();
-        instantiationPoint = new List<GameObject>();
-        instantiationPoint.AddRange(GameObject.FindGameObjectsWithTag("StartingPoints"));
-        cubeDisable = new List<GameObject>();
-        cubeDisable.AddRange(GameObject.FindGameObjectsWithTag("Hide"));
-        XROrigin origin = FindObjectOfType<XROrigin>();
-        headRig = origin.transform.Find("Camera Offset/Main Camera");
-        leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
-        rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
-        int playerCount = PhotonNetwork.CountOfPlayers;
-        Debug.Log("Player count is : " + playerCount);
-        origin.transform.position = instantiationPoint[playerCount].transform.position;
-        origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
-        pv.RPC("RPC_Array_Update",RpcTarget.AllBuffered);
-        //int randomNumber = Random.Range(0, cubeDisable.Count);
-        //Debug.Log("Randon value : " + randomNumber);
-        //PhotonNetwork.Destroy(cubeDisable[randomNumber]);
-        //cubeDisable.RemoveAt(randomNumber);
+        if (PhotonNetwork.IsConnected && pv.IsMine)
+        {
+            instantiationPoint = new List<GameObject>();
+            instantiationPoint.AddRange(GameObject.FindGameObjectsWithTag("StartingPoints"));
+            cubeDisable = new List<GameObject>();
+            cubeDisable.AddRange(GameObject.FindGameObjectsWithTag("Hide"));
+            XROrigin origin = FindObjectOfType<XROrigin>();
+            headRig = origin.transform.Find("Camera Offset/Main Camera");
+            leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
+            rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
+            int playerCount = PhotonNetwork.CountOfPlayers;
+            Debug.Log("Player count is : " + playerCount);
+            origin.transform.position = instantiationPoint[playerCount].transform.position;
+            origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
+            pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
+        }
     }
+
     [PunRPC]
     void RPC_Array_Update()
     {
-        int randomNumber = Random.Range(0, cubeDisable.Count);
-        Debug.Log("Randon value : " + randomNumber);
-        PhotonNetwork.Destroy(cubeDisable[randomNumber]);
-        cubeDisable.RemoveAt(randomNumber);
+        if (PhotonNetwork.IsConnected && pv.IsMine)
+        {
+            int randomNumber = Random.Range(0, cubeDisable.Count);
+            Debug.Log("Randon value : " + randomNumber);
+            PhotonNetwork.Destroy(cubeDisable[randomNumber]);
+            cubeDisable.RemoveAt(randomNumber);
+        }
     }
     void Update()
     {
@@ -63,6 +66,14 @@ public class NetworkPlayer : MonoBehaviour
 
     }
 
+    [PunRPC]
+    void RPC_PlayerCount()
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+
+        }
+    }
     void MappingMovement(Transform target, Transform rigTransform)
     {
         target.position = rigTransform.position;
