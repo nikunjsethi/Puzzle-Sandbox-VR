@@ -17,9 +17,9 @@ public class CubeInteracter : MonoBehaviour
         {
             if (other.CompareTag("Interactable"))
             {
-                PhotonNetwork.Destroy(other.gameObject);
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
             }
+            PhotonNetwork.Destroy(other.gameObject);
         }
     }
 

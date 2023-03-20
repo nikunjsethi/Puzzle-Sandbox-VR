@@ -17,7 +17,7 @@ public class NetworkPlayer : MonoBehaviour
     private Transform leftHandRig;
     private Transform rightHandRig;
 
-    public List<GameObject> instantiationPoint;
+    public List<GameObject> instantiationPoint;                                 //the points where the players will instantiate around the table
     public List<GameObject> cubeDisable;
     // Start is called before the first frame update
     void Start()

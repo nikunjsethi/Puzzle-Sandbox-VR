@@ -46,6 +46,8 @@ MonoBehaviour:
   - RPC_Array_Update
   - RPC_PlayerCount
   - RPC_ColorChanger
+  - LoadLevel
+  - LoadLevelSync
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

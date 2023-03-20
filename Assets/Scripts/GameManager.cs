@@ -24,11 +24,15 @@ public class GameManager : MonoBehaviour
     private AsyncOperation async;
     public string currentSceneName;                             // currently loaded scene name - making public for now so we can see it in the editor
 
+    //Photon Component
+    private PhotonView pv;
+
     /// <summary>
     /// Start is called before the first frame update - sets up the basic variables and those to not get destroyed
     /// </summary>
     void Start()
     {
+        pv = GetComponent<PhotonView>();
         // for now grab the active scene name (should be main as that is the scene that is loaded first)
         currentSceneName = MAIN_SCENE_NAME;
 
@@ -46,8 +50,8 @@ public class GameManager : MonoBehaviour
     {
         // set up the teleport
         // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
-        StartCoroutine(LoadLevel(teleportSceneNames[0]));
-
+        //StartCoroutine(LoadLevel(teleportSceneNames[0]));
+        pv.RPC("LoadLevelSync", RpcTarget.All);
         // for debugging, adding the player id and information to the teleport text for now
         teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
@@ -63,6 +67,11 @@ public class GameManager : MonoBehaviour
 
     } // TeleportBack
 
+    [PunRPC]
+    public void LoadLevelSync()
+    {
+        StartCoroutine(LoadLevel(teleportSceneNames[0]));
+    }
     // Co-routine to load a level given the level name in string form
     IEnumerator LoadLevel(string levelName)
     {
