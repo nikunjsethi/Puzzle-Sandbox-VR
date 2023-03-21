@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     // constants that can be used by other classes
