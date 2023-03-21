@@ -63,7 +63,8 @@ public class GameManager : MonoBehaviour
     public void TeleportBack()
     {
         // unload the puzzle level
-        StartCoroutine(UnloadLevel());
+        pv.RPC("UnloadLevelSync", RpcTarget.All);
+        //StartCoroutine(UnloadLevel());
 
     } // TeleportBack
 
@@ -72,6 +73,13 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(LoadLevel(teleportSceneNames[0]));
     }
+
+    [PunRPC]
+    public void UnloadLevelSync()
+    {
+        StartCoroutine(UnloadLevel());
+    }
+
     // Co-routine to load a level given the level name in string form
     IEnumerator LoadLevel(string levelName)
     {
