@@ -46,9 +46,10 @@ public class NetworkPlayer : MonoBehaviour
             Debug.Log("Player count is : " + playerCount);
             origin.transform.position = instantiationPoint[playerCount].transform.position;
             origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
+            pv.RPC("PlayerStats", RpcTarget.AllBuffered, 0);
         }
             pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
-        pv.RPC("PlayerStats",RpcTarget.AllBuffered,0);
+       
     }
 
     [PunRPC]
