@@ -514,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &411533142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,6 +3037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 4197962350126133306, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4197962350126133307, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3399,7 +3403,7 @@ MonoBehaviour:
   - {fileID: 1618897944}
   xrOrigin: {fileID: 1824493005}
   teleportSceneNames:
-  - TestTeleporter
+  - Puzzle_Scene_1
   teleportText: {fileID: 475525851}
   countdownMenu: {fileID: 1554716998}
   countdownText: {fileID: 697403235}
