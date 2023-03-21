@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // constant values used by this script
-    private const string MAIN_SCENE_NAME = "MainTestJim";
+    private const string MAIN_SCENE_NAME = "Main";
     private const int COUNTDOWN_TIME = 5;                       // number of seconds to countdown
 
     // serialized fields available in the editor for use in this script
@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void TeleportToPuzzle()
     {
-        StartCountdownTimer();
-
         // set up the teleport
         // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
         //StartCoroutine(LoadLevel(teleportSceneNames[0]));
@@ -74,14 +72,12 @@ public class GameManager : MonoBehaviour
         teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
         // debug log
-        Debug.Log("Loading level TestTeleporter");
+        //Debug.Log("Loading level TestTeleporter");
 
     } // end TeleportToPuzzle
 
     public void TeleportBack()
     {
-        StartCountdownTimer();
-
         // unload the puzzle level
         pv.RPC("UnloadLevelSync", RpcTarget.All);
         //StartCoroutine(UnloadLevel());
@@ -103,6 +99,8 @@ public class GameManager : MonoBehaviour
     // Co-routine to load a level given the level name in string form
     IEnumerator LoadLevel(string levelName)
     {
+        StartCountdownTimer();
+
         // store the current scene as the previous scene (we only teleport to one scene at a time)
         currentSceneName = levelName;
 
@@ -158,6 +156,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator UnloadLevel()
     {
+        StartCountdownTimer();
+
         // make sure we are done counting down before moving scenes
         while (countdownOn)
         {
