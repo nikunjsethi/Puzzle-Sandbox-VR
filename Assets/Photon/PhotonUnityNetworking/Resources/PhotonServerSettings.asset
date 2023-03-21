@@ -48,6 +48,7 @@ MonoBehaviour:
   - RPC_ColorChanger
   - LoadLevel
   - LoadLevelSync
+  - PlayerStats
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

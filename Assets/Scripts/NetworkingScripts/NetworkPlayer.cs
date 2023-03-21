@@ -5,6 +5,7 @@ using UnityEngine.XR;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.XR.CoreUtils;
+using TMPro;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -19,10 +20,18 @@ public class NetworkPlayer : MonoBehaviour
 
     public List<GameObject> instantiationPoint;                                 //the points where the players will instantiate around the table
     public List<GameObject> cubeDisable;
+
+    public TextMeshProUGUI playerCount;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         pv = GetComponent<PhotonView>();
+        if (pv.IsMine)
+            playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+    }
+    void Start()
+    {
         if (PhotonNetwork.IsConnected && pv.IsMine)
         {
             instantiationPoint = new List<GameObject>();
@@ -39,8 +48,15 @@ public class NetworkPlayer : MonoBehaviour
             origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
         }
             pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
+        pv.RPC("PlayerStats",RpcTarget.AllBuffered,0);
     }
 
+    [PunRPC]
+    void PlayerStats(int number)
+    {
+        number = PhotonNetwork.CountOfPlayers;
+        playerCount.text = number.ToString();
+    }
     [PunRPC]
     void RPC_Array_Update()
     {
