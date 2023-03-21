@@ -46,18 +46,18 @@ public class NetworkPlayer : MonoBehaviour
             Debug.Log("Player count is : " + playerCount);
             origin.transform.position = instantiationPoint[playerCount].transform.position;
             origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
-            pv.RPC("PlayerStats", RpcTarget.AllBuffered, 0);
+            //pv.RPC("PlayerStats", RpcTarget.AllBuffered, 0);
         }
             pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
        
     }
 
-    [PunRPC]
-    void PlayerStats(int number)
-    {
-        number = PhotonNetwork.CountOfPlayers;
-        playerCount.text = number.ToString();
-    }
+    //[PunRPC]
+    //void PlayerStats(int number)
+    //{
+    //    number = PhotonNetwork.CountOfPlayers;
+    //    playerCount.text = number.ToString();
+    //}
     [PunRPC]
     void RPC_Array_Update()
     {
@@ -79,7 +79,11 @@ public class NetworkPlayer : MonoBehaviour
             MappingMovement(Head, headRig);
             MappingMovement(LeftHand, leftHandRig);
             MappingMovement(RightHand, rightHandRig);
+            //int playerNumber = PhotonNetwork.CountOfPlayers;
+            //playerCount.text = playerNumber.ToString();
         }
+        int playerNumber = PhotonNetwork.CountOfPlayers;
+        playerCount.text = playerNumber.ToString();
 
     }
 
