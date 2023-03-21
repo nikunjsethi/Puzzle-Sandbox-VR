@@ -8,7 +8,7 @@ public class Teleporter_Puzzle1 : MonoBehaviour
     // Configuration for spawning
     [Header("Spawns")]
     public Transform[] spawns = new Transform[10];
-    private List<int> spawnCombo = new List<int>();
+    public List<int> spawnCombo = new List<int>();
     private int playerAmount;
 
     // private variables used by this script
@@ -24,6 +24,9 @@ public class Teleporter_Puzzle1 : MonoBehaviour
 
         //Find the amount of players
         playerAmount = PhotonNetwork.CountOfPlayers;
+
+        //Find Laser Control Script
+        spawns = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>().spawnPoints;
 
         //This sets up the spawn locations
         for (int j = 0; j < playerAmount; j++)
@@ -69,16 +72,8 @@ public class Teleporter_Puzzle1 : MonoBehaviour
                         continue;
                 }
 
-
-                int l = playerAmount - spawnCombo.Count;
-
-                for (int i = 0; i < l; i++)
-                {
-                    int index = Random.Range(0, placesToFill.Count);
-
-                    spawnCombo.Add(placesToFill[index]);
-                    placesToFill.Remove(placesToFill[index]);
-                }
+                int index = Random.Range(0, placesToFill.Count);
+                spawnCombo.Add(placesToFill[index]);
             }
         }
 
