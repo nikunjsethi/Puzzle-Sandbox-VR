@@ -279,6 +279,7 @@ MonoBehaviour:
   instantiationPoint: []
   cubeDisable: []
   playerCount: {fileID: 0}
+  networkManager: {fileID: 0}
 --- !u!114 &5432282646331160005
 MonoBehaviour:
   m_ObjectHideFlags: 0

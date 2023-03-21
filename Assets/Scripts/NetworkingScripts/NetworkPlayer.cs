@@ -22,14 +22,20 @@ public class NetworkPlayer : MonoBehaviour
     public List<GameObject> cubeDisable;
 
     public TextMeshProUGUI playerCount;
-    // Start is called before the first frame update
+    public NetworkManager networkManager;
+
 
     private void Awake()
     {
         pv = GetComponent<PhotonView>();
         if (pv.IsMine)
+        {
             playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+            networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        }
     }
+
+    // Start is called before the first frame update
     void Start()
     {
         if (PhotonNetwork.IsConnected && pv.IsMine)
@@ -63,6 +69,7 @@ public class NetworkPlayer : MonoBehaviour
             playerCount.text = number.ToString();
         }
     }
+
     [PunRPC]
     void RPC_Array_Update()
     {
@@ -72,8 +79,11 @@ public class NetworkPlayer : MonoBehaviour
             Debug.Log("Randon value : " + randomNumber);
             PhotonNetwork.Destroy(cubeDisable[randomNumber]);
             cubeDisable.RemoveAt(randomNumber);
+            networkManager.numCubesToReplace++;
+            networkManager.playerInLevel = true;
         }
     }
+
     void Update()
     {
         if(pv.IsMine)
