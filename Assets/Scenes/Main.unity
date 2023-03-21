@@ -2924,7 +2924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1554716999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3399,7 +3399,7 @@ MonoBehaviour:
   - {fileID: 1618897944}
   xrOrigin: {fileID: 1824493005}
   teleportSceneNames:
-  - Puzzle_Scene_1
+  - TestTeleporter
   teleportText: {fileID: 475525851}
   countdownMenu: {fileID: 1554716998}
   countdownText: {fileID: 697403235}

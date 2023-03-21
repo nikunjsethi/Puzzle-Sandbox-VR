@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // constant values used by this script
-    private const string MAIN_SCENE_NAME = "MainTestJim";
+    private const string MAIN_SCENE_NAME = "Main";
     private const int COUNTDOWN_TIME = 5;                       // number of seconds to countdown
 
     // serialized fields available in the editor for use in this script
