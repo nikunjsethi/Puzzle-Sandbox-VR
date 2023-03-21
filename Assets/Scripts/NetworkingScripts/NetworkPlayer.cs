@@ -5,6 +5,7 @@ using UnityEngine.XR;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.XR.CoreUtils;
+using TMPro;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -17,12 +18,20 @@ public class NetworkPlayer : MonoBehaviour
     private Transform leftHandRig;
     private Transform rightHandRig;
 
-    public List<GameObject> instantiationPoint;
+    public List<GameObject> instantiationPoint;                                 //the points where the players will instantiate around the table
     public List<GameObject> cubeDisable;
+
+    public TextMeshProUGUI playerCount;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         pv = GetComponent<PhotonView>();
+        if (pv.IsMine)
+            playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+    }
+    void Start()
+    {
         if (PhotonNetwork.IsConnected && pv.IsMine)
         {
             instantiationPoint = new List<GameObject>();
@@ -38,9 +47,22 @@ public class NetworkPlayer : MonoBehaviour
             origin.transform.position = instantiationPoint[playerCount].transform.position;
             origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
         }
-            pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
+        int newCount = PhotonNetwork.CountOfPlayers;
+        pv.RPC("PlayerStats", RpcTarget.AllBuffered, newCount);
+        pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
+        Debug.Log("RPC getting called : " + newCount);
+       
     }
 
+    [PunRPC]
+    void PlayerStats(int number)
+    {
+        if (PhotonNetwork.IsConnected && pv.IsMine)
+        {
+            number = PhotonNetwork.CountOfPlayers;
+            playerCount.text = number.ToString();
+        }
+    }
     [PunRPC]
     void RPC_Array_Update()
     {
@@ -60,7 +82,7 @@ public class NetworkPlayer : MonoBehaviour
             LeftHand.gameObject.SetActive(false);
             RightHand.gameObject.SetActive(false);
             MappingMovement(Head, headRig);
-            MappingMovement(LeftHand, leftHandRig);
+            MappingMovement(LeftHand, leftHandRig); 
             MappingMovement(RightHand, rightHandRig);
         }
 

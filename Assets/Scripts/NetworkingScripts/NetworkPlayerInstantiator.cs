@@ -14,7 +14,6 @@ public class NetworkPlayerInstantiator : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        int playerCount = PhotonNetwork.CountOfPlayers;
         spawnedPlayerPrefab = PhotonNetwork.Instantiate("NewPlayer", transform.position, transform.rotation);
 
         // testing the id information for the photon view of this object after it is created
