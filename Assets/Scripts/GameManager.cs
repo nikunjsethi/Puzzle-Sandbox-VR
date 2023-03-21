@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // constant values used by this script
-    private const string MAIN_SCENE_NAME = "Main";
+    private const string MAIN_SCENE_NAME = "MainTestJim";
+    private const int COUNTDOWN_TIME = 5;                       // number of seconds to countdown
 
     // serialized fields available in the editor for use in this script
     [Header("Data we don't want destroyed when scripts are swapped")]
@@ -19,10 +20,16 @@ public class GameManager : MonoBehaviour
     [Header("Data for loading scenes and teleporting")]
     [SerializeField] string[] teleportSceneNames;
     [SerializeField] TMP_Text teleportText;
+    [SerializeField] GameObject countdownMenu;
+    [SerializeField] TMP_Text countdownText;
 
     // private variables used by this script
     private AsyncOperation async;
     public string currentSceneName;                             // currently loaded scene name - making public for now so we can see it in the editor
+
+    // countdown timer data for players - TODO: Share with the network so we can show same value to all players.
+    private float countdownTimer;
+    private bool countdownOn;
 
     /// <summary>
     /// Start is called before the first frame update - sets up the basic variables and those to not get destroyed
@@ -42,8 +49,19 @@ public class GameManager : MonoBehaviour
 
     } // end Start
 
+    /// <summary>
+    /// Updates the game every tick for general game changes
+    /// </summary>
+    private void Update()
+    {
+        //UpdateCountdownTimer();
+
+    } // end Update
+
     public void TeleportToPuzzle()
     {
+        StartCountdownTimer();
+
         // set up the teleport
         // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
         StartCoroutine(LoadLevel(teleportSceneNames[0]));
@@ -58,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     public void TeleportBack()
     {
+        StartCountdownTimer();
+
         // unload the puzzle level
         StartCoroutine(UnloadLevel());
 
@@ -77,7 +97,15 @@ public class GameManager : MonoBehaviour
         // wait until the scene is loaded
         while (!async.isDone)
         {
+            UpdateCountdownTimer();
             // Loading the scene asynchronusly, to avoid locking up the screen
+            yield return null;
+        }
+
+        // make sure we are done counting down before moving scenes
+        while (countdownOn)
+        {
+            UpdateCountdownTimer();
             yield return null;
         }
 
@@ -113,6 +141,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator UnloadLevel()
     {
+        // make sure we are done counting down before moving scenes
+        while (countdownOn)
+        {
+            UpdateCountdownTimer();
+            yield return null;
+        }
+
         // unload the previously loaded scene so we don't have two on top of each other
         Scene loadedLevel = SceneManager.GetSceneByName(currentSceneName);
 
@@ -151,4 +186,36 @@ public class GameManager : MonoBehaviour
         Debug.Log("Level Unloaded");
 
     } // end UnloadLevel
+
+    /// <summary>
+    /// Sets up the countdown timer for the players
+    /// </summary>
+    private void StartCountdownTimer()
+    {
+        countdownMenu.SetActive(true);
+        countdownTimer = COUNTDOWN_TIME;
+        countdownOn = true;
+
+    } // end StartCountdownTimer
+
+    /// <summary>
+    /// Updates the countdown timer and lets the system know it is time to teleport
+    /// </summary>
+    private void UpdateCountdownTimer()
+    {
+        //if (countdownOn)
+        {
+            countdownTimer -= Time.deltaTime;
+
+            // update the text for the count down on this game
+            countdownText.text = "Teleporting in " + (int)countdownTimer + " seconds!";
+
+            if (countdownTimer  < 0)
+            {
+                // time to teleport - add teleport here or do we do it in the co-routine still.
+                countdownOn = false;
+                countdownMenu.SetActive(false);
+            }
+        }
+    }
 }

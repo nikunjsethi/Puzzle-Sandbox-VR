@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: fbffdcbd04e7331439ab256a0f73cabe
+  - enabled: 1
+    path: Assets/Scenes/MainTestJim.unity
+    guid: 2784b9ac7c416d147988d21172fe5091
   - enabled: 0
     path: Assets/Scenes/Nikunj_Multiplayer.unity
     guid: 4d97cef9d972a3c4892bf77cef4ddc70
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TestTeleporter.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
