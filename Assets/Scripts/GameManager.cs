@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
         // debug log
-        Debug.Log("Loading level TestTeleporter");
+        //Debug.Log("Loading level TestTeleporter");
 
     } // end TeleportToPuzzle
 
