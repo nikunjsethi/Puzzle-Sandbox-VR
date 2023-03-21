@@ -50,14 +50,18 @@ public class NetworkPlayer : MonoBehaviour
         int newCount = PhotonNetwork.CountOfPlayers;
         pv.RPC("PlayerStats", RpcTarget.AllBuffered, newCount);
         pv.RPC("RPC_Array_Update", RpcTarget.AllBuffered);
+        Debug.Log("RPC getting called : " + newCount);
        
     }
 
     [PunRPC]
     void PlayerStats(int number)
     {
-        number = PhotonNetwork.CountOfPlayers;
-        playerCount.text = number.ToString();
+        if (PhotonNetwork.IsConnected && pv.IsMine)
+        {
+            number = PhotonNetwork.CountOfPlayers;
+            playerCount.text = number.ToString();
+        }
     }
     [PunRPC]
     void RPC_Array_Update()
