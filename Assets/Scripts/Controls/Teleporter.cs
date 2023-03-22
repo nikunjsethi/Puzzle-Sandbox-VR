@@ -23,11 +23,11 @@ public class Teleporter : MonoBehaviour
     /// <param name="other">The object that collided with this teleporter</param>
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Teleporter collision activated");
+        //Debug.Log("Teleporter collision activated");
 
         if ((other != null) && other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Teleporter collided with player");
+            //Debug.Log("Teleporter collided with player");
             gameManager.TeleportBack();
         }
 

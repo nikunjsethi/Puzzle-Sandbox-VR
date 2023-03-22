@@ -48,10 +48,15 @@ public class NetworkPlayer : MonoBehaviour
             headRig = origin.transform.Find("Camera Offset/Main Camera");
             leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
             rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
+            
             int playerCount = PhotonNetwork.CountOfPlayers;
             Debug.Log("Player count is : " + playerCount);
-            origin.transform.position = instantiationPoint[playerCount].transform.position;
-            origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
+
+            // teleport the player(s) to their spot in the base hub
+            int playerTeleportPos = networkManager.getPlayerIDZeroBased();
+
+            origin.transform.position = instantiationPoint[playerTeleportPos].transform.position;
+            origin.transform.rotation = instantiationPoint[playerTeleportPos].transform.rotation;
         }
         int newCount = PhotonNetwork.CountOfPlayers;
         pv.RPC("PlayerStats", RpcTarget.AllBuffered, newCount);

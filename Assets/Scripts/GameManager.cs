@@ -18,10 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject xrOrigin;                       // saving this separately as we need to teleport it
 
     [Header("Data for loading scenes and teleporting")]
+    [SerializeField] NetworkManager networkManager;
     [SerializeField] string[] teleportSceneNames;
     [SerializeField] TMP_Text teleportText;
     [SerializeField] GameObject countdownMenu;
     [SerializeField] TMP_Text countdownText;
+
+    [Header("Menu Systems")]
+    [SerializeField] GameObject pauseMenu;
 
     // private variables used by this script
     private AsyncOperation async;
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
     private float countdownTimer;
     private bool countdownOn;
 
-    //Photon Component
+    // Photon Component
     private PhotonView pv;
 
     /// <summary>
@@ -39,7 +43,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // get the network components used by this script
         pv = GetComponent<PhotonView>();
+
         // for now grab the active scene name (should be main as that is the scene that is loaded first)
         currentSceneName = MAIN_SCENE_NAME;
 
@@ -54,47 +60,42 @@ public class GameManager : MonoBehaviour
     } // end Start
 
     /// <summary>
-    /// Updates the game every tick for general game changes
+    /// Teleports to a puzzle after loading it and counting down
     /// </summary>
-    private void Update()
-    {
-        //UpdateCountdownTimer();
-
-    } // end Update
-
     public void TeleportToPuzzle()
     {
         // set up the teleport
-        // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
-        //StartCoroutine(LoadLevel(teleportSceneNames[0]));
         pv.RPC("LoadLevelSync", RpcTarget.All);
+
         // for debugging, adding the player id and information to the teleport text for now
         teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
-        // debug log
-        //Debug.Log("Loading level TestTeleporter");
-
     } // end TeleportToPuzzle
 
+    /// <summary>
+    /// Teleport back function to be used by the teleport objects
+    /// </summary>
     public void TeleportBack()
     {
         // unload the puzzle level
         pv.RPC("UnloadLevelSync", RpcTarget.All);
-        //StartCoroutine(UnloadLevel());
 
-    } // TeleportBack
+    } // end TeleportBack
 
     [PunRPC]
     public void LoadLevelSync()
     {
+        // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
         StartCoroutine(LoadLevel(teleportSceneNames[0]));
-    }
+
+    } // end LoadLevelSync
 
     [PunRPC]
     public void UnloadLevelSync()
     {
         StartCoroutine(UnloadLevel());
-    }
+
+    } // end UnloadLevelSync
 
     // Co-routine to load a level given the level name in string form
     IEnumerator LoadLevel(string levelName)
@@ -130,15 +131,9 @@ public class GameManager : MonoBehaviour
         // teleport the player(s) to the start location of the puzzle scene for this systems player
         // (each puzzle scene should have 10 locations)
         Debug.Log("Actor ID: " + PhotonNetwork.LocalPlayer.ActorNumber);
-        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
+        int playerTeleportPos = networkManager.getPlayerIDZeroBased();
 
-        // keep the locations in the range of the available teleport locations
-        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
-        {
-            playerTeleportPos = 0;
-        }
-
-        // TODO: Need to figure out rotation (or use teleport pads instead of empty objects)
+        // Find the start location and tranport the player there
         GameObject startLocation = GameObject.Find("StartLocation" + playerTeleportPos);
         if (startLocation == null)
         {
@@ -147,6 +142,7 @@ public class GameManager : MonoBehaviour
         else
         {
             xrOrigin.transform.position = startLocation.transform.position;
+            xrOrigin.transform.rotation = startLocation.transform.rotation;
         }
 
         // prnt out the location
@@ -183,16 +179,11 @@ public class GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentSceneName));
 
         // teleport the player(s) to their spot in the base hub
-        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
-
-        // keep the locations in the range of the available teleport locations
-        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
-        {
-            playerTeleportPos = 0;
-        }
+        int playerTeleportPos = networkManager.getPlayerIDZeroBased();
 
         GameObject baseLocation = baseTeleportLocations[playerTeleportPos];
         xrOrigin.transform.position = baseLocation.transform.position;
+        xrOrigin.transform.rotation = baseLocation.transform.rotation;
 
         // now wait for the async operation to complete
         while ( (async != null) && !async.isDone)
@@ -234,5 +225,6 @@ public class GameManager : MonoBehaviour
                 countdownMenu.SetActive(false);
             }
         }
-    }
+
+    } //end UpdateCountdownTimer
 }
