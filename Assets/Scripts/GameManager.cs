@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,18 +27,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text countdownText;
 
     [Header("Menu Systems")]
+    [SerializeField] InputActionAsset inputActions;
+    [SerializeField] GameObject rightHandUIController;
+    [SerializeField] GameObject rightHandController;
     [SerializeField] GameObject pauseMenu;
 
     // private variables used by this script
     private AsyncOperation async;
     public string currentSceneName;                             // currently loaded scene name - making public for now so we can see it in the editor
 
-    // countdown timer data for players - TODO: Share with the network so we can show same value to all players.
+    // countdown timer data for players
     private float countdownTimer;
     private bool countdownOn;
 
     // Photon Component
     private PhotonView pv;
+
+    // Pause menu system variables
+    private InputAction menuToggle;
+    private bool menuActive;
 
     /// <summary>
     /// Start is called before the first frame update - sets up the basic variables and those to not get destroyed
@@ -57,7 +66,44 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(necessaryGameObjects[i]);
         }
 
+        var inputActionMap = inputActions.FindActionMap("XRI LeftHand Interaction");
+        menuToggle = inputActionMap.FindAction("Menu Toggle");
+        menuToggle.performed += ToggleMenu;
+        menuToggle.Enable();
+
     } // end Start
+
+    /// <summary>
+    /// Used to togle the pause menu on/off
+    /// </summary>
+    /// <param name="context"></param>
+    public void ToggleMenu(InputAction.CallbackContext context)
+    {
+        if (menuActive)
+        {
+            menuActive = false;
+            pauseMenu.SetActive(false);
+            rightHandUIController.SetActive(false);
+            rightHandController.SetActive(true);
+        }
+        else
+        {
+            menuActive = true;
+            pauseMenu.SetActive(true);
+            rightHandUIController.SetActive(true);
+            rightHandController.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Exits the game - used by option menu
+    /// </summary>
+    public void QuitGame()
+    {
+        // TODO: Add any clean up code here! Some classes may need to call OnApplicationQuit methods to clean up
+        Application.Quit();
+
+    } // end QuitGame
 
     /// <summary>
     /// Teleports to a puzzle after loading it and counting down
