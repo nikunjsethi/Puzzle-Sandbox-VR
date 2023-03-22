@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Data for loading scenes and teleporting")]
     [SerializeField] NetworkManager networkManager;
+    [SerializeField] TMP_Dropdown teleportSceneDropdown;
     [SerializeField] string[] teleportSceneNames;
     [SerializeField] TMP_Text teleportText;
     [SerializeField] GameObject countdownMenu;
@@ -66,10 +67,14 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(necessaryGameObjects[i]);
         }
 
+        // set up the options menu toggle system
         var inputActionMap = inputActions.FindActionMap("XRI LeftHand Interaction");
         menuToggle = inputActionMap.FindAction("Menu Toggle");
         menuToggle.performed += ToggleMenu;
         menuToggle.Enable();
+
+        // set up the teleport level options
+        PopulateDropDownWithStrings(teleportSceneDropdown);
 
     } // end Start
 
@@ -131,8 +136,8 @@ public class GameManager : MonoBehaviour
     [PunRPC]
     public void LoadLevelSync()
     {
-        // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
-        StartCoroutine(LoadLevel(teleportSceneNames[0]));
+        // Go to the option the player had selected on the menu
+        StartCoroutine(LoadLevel(teleportSceneNames[teleportSceneDropdown.value]));
 
     } // end LoadLevelSync
 
@@ -273,4 +278,27 @@ public class GameManager : MonoBehaviour
         }
 
     } //end UpdateCountdownTimer
+
+    /// <summary>
+    /// You can populate any dropdown with a list of strings with this method
+    /// </summary>
+    /// <param name="dropdown">The UI dropdown to populate</param>
+    private void PopulateDropDownWithStrings(TMP_Dropdown dropdown)
+    {
+
+        // create a list to put into the options
+        List<TMP_Dropdown.OptionData> newOptions = new List<TMP_Dropdown.OptionData>();
+
+        // populate thi newOptions list
+        for (int i = 0; i < teleportSceneNames.Length; i++)
+        {
+            newOptions.Add(new TMP_Dropdown.OptionData(teleportSceneNames[i]));
+        }
+
+        // clear the option list and add the enum options
+        dropdown.ClearOptions();
+        dropdown.AddOptions(newOptions);
+
+    } // end PopulateDropDownWithEnum
+
 }
