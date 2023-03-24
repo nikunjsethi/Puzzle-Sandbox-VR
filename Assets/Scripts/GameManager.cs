@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,28 +20,42 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject xrOrigin;                       // saving this separately as we need to teleport it
 
     [Header("Data for loading scenes and teleporting")]
+    [SerializeField] NetworkManager networkManager;
+    [SerializeField] TMP_Dropdown teleportSceneDropdown;
     [SerializeField] string[] teleportSceneNames;
     [SerializeField] TMP_Text teleportText;
     [SerializeField] GameObject countdownMenu;
     [SerializeField] TMP_Text countdownText;
 
+    [Header("Menu Systems")]
+    [SerializeField] InputActionAsset inputActions;
+    [SerializeField] GameObject rightHandUIController;
+    [SerializeField] GameObject rightHandController;
+    [SerializeField] GameObject pauseMenu;
+
     // private variables used by this script
     private AsyncOperation async;
     public string currentSceneName;                             // currently loaded scene name - making public for now so we can see it in the editor
 
-    // countdown timer data for players - TODO: Share with the network so we can show same value to all players.
+    // countdown timer data for players
     private float countdownTimer;
     private bool countdownOn;
 
-    //Photon Component
+    // Photon Component
     private PhotonView pv;
+
+    // Pause menu system variables
+    private InputAction menuToggle;
+    private bool menuActive;
 
     /// <summary>
     /// Start is called before the first frame update - sets up the basic variables and those to not get destroyed
     /// </summary>
     void Start()
     {
+        // get the network components used by this script
         pv = GetComponent<PhotonView>();
+
         // for now grab the active scene name (should be main as that is the scene that is loaded first)
         currentSceneName = MAIN_SCENE_NAME;
 
@@ -51,50 +67,86 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(necessaryGameObjects[i]);
         }
 
+        // set up the options menu toggle system
+        var inputActionMap = inputActions.FindActionMap("XRI LeftHand Interaction");
+        menuToggle = inputActionMap.FindAction("Menu Toggle");
+        menuToggle.performed += ToggleMenu;
+        menuToggle.Enable();
+
+        // set up the teleport level options
+        PopulateDropDownWithStrings(teleportSceneDropdown);
+
     } // end Start
 
     /// <summary>
-    /// Updates the game every tick for general game changes
+    /// Used to togle the pause menu on/off
     /// </summary>
-    private void Update()
+    /// <param name="context"></param>
+    public void ToggleMenu(InputAction.CallbackContext context)
     {
-        //UpdateCountdownTimer();
+        if (menuActive)
+        {
+            menuActive = false;
+            pauseMenu.SetActive(false);
+            rightHandUIController.SetActive(false);
+            rightHandController.SetActive(true);
+        }
+        else
+        {
+            menuActive = true;
+            pauseMenu.SetActive(true);
+            rightHandUIController.SetActive(true);
+            rightHandController.SetActive(false);
+        }
+    }
 
-    } // end Update
+    /// <summary>
+    /// Exits the game - used by option menu
+    /// </summary>
+    public void QuitGame()
+    {
+        // TODO: Add any clean up code here! Some classes may need to call OnApplicationQuit methods to clean up
+        Application.Quit();
 
+    } // end QuitGame
+
+    /// <summary>
+    /// Teleports to a puzzle after loading it and counting down
+    /// </summary>
     public void TeleportToPuzzle()
     {
         // set up the teleport
-        // TODO: This only goes to the first scene in the array, need to set it up that another button sets a variable to the correct location
-        //StartCoroutine(LoadLevel(teleportSceneNames[0]));
         pv.RPC("LoadLevelSync", RpcTarget.All);
+
         // for debugging, adding the player id and information to the teleport text for now
         teleportText.text = "Press the button to start the next puzzle!\nActor ID: " + PhotonNetwork.LocalPlayer.ActorNumber;
 
-        // debug log
-        //Debug.Log("Loading level TestTeleporter");
-
     } // end TeleportToPuzzle
 
+    /// <summary>
+    /// Teleport back function to be used by the teleport objects
+    /// </summary>
     public void TeleportBack()
     {
         // unload the puzzle level
         pv.RPC("UnloadLevelSync", RpcTarget.All);
-        //StartCoroutine(UnloadLevel());
 
-    } // TeleportBack
+    } // end TeleportBack
 
     [PunRPC]
     public void LoadLevelSync()
     {
-        StartCoroutine(LoadLevel(teleportSceneNames[0]));
-    }
+        // Go to the option the player had selected on the menu
+        StartCoroutine(LoadLevel(teleportSceneNames[teleportSceneDropdown.value]));
+
+    } // end LoadLevelSync
 
     [PunRPC]
     public void UnloadLevelSync()
     {
         StartCoroutine(UnloadLevel());
-    }
+
+    } // end UnloadLevelSync
 
     // Co-routine to load a level given the level name in string form
     IEnumerator LoadLevel(string levelName)
@@ -130,15 +182,9 @@ public class GameManager : MonoBehaviour
         // teleport the player(s) to the start location of the puzzle scene for this systems player
         // (each puzzle scene should have 10 locations)
         Debug.Log("Actor ID: " + PhotonNetwork.LocalPlayer.ActorNumber);
-        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
+        int playerTeleportPos = networkManager.getPlayerIDZeroBased();
 
-        // keep the locations in the range of the available teleport locations
-        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
-        {
-            playerTeleportPos = 0;
-        }
-
-        // TODO: Need to figure out rotation (or use teleport pads instead of empty objects)
+        // Find the start location and tranport the player there
         GameObject startLocation = GameObject.Find("StartLocation" + playerTeleportPos);
         if (startLocation == null)
         {
@@ -147,6 +193,7 @@ public class GameManager : MonoBehaviour
         else
         {
             xrOrigin.transform.position = startLocation.transform.position;
+            xrOrigin.transform.rotation = startLocation.transform.rotation;
         }
 
         // prnt out the location
@@ -183,16 +230,11 @@ public class GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentSceneName));
 
         // teleport the player(s) to their spot in the base hub
-        int playerTeleportPos = (PhotonNetwork.LocalPlayer.ActorNumber - 1);
-
-        // keep the locations in the range of the available teleport locations
-        if ((playerTeleportPos < 0) || (playerTeleportPos >= NetworkManager.MAX_NUM_PLAYERS))
-        {
-            playerTeleportPos = 0;
-        }
+        int playerTeleportPos = networkManager.getPlayerIDZeroBased();
 
         GameObject baseLocation = baseTeleportLocations[playerTeleportPos];
         xrOrigin.transform.position = baseLocation.transform.position;
+        xrOrigin.transform.rotation = baseLocation.transform.rotation;
 
         // now wait for the async operation to complete
         while ( (async != null) && !async.isDone)
@@ -234,5 +276,29 @@ public class GameManager : MonoBehaviour
                 countdownMenu.SetActive(false);
             }
         }
-    }
+
+    } //end UpdateCountdownTimer
+
+    /// <summary>
+    /// You can populate any dropdown with a list of strings with this method
+    /// </summary>
+    /// <param name="dropdown">The UI dropdown to populate</param>
+    private void PopulateDropDownWithStrings(TMP_Dropdown dropdown)
+    {
+
+        // create a list to put into the options
+        List<TMP_Dropdown.OptionData> newOptions = new List<TMP_Dropdown.OptionData>();
+
+        // populate thi newOptions list
+        for (int i = 0; i < teleportSceneNames.Length; i++)
+        {
+            newOptions.Add(new TMP_Dropdown.OptionData(teleportSceneNames[i]));
+        }
+
+        // clear the option list and add the enum options
+        dropdown.ClearOptions();
+        dropdown.AddOptions(newOptions);
+
+    } // end PopulateDropDownWithEnum
+
 }
