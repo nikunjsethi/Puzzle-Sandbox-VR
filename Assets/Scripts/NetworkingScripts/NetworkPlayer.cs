@@ -22,14 +22,20 @@ public class NetworkPlayer : MonoBehaviour
     public List<GameObject> cubeDisable;
 
     public TextMeshProUGUI playerCount;
-    // Start is called before the first frame update
+    public NetworkManager networkManager;
+
 
     private void Awake()
     {
         pv = GetComponent<PhotonView>();
         if (pv.IsMine)
+        {
             playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+            networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        }
     }
+
+    // Start is called before the first frame update
     void Start()
     {
         if (PhotonNetwork.IsConnected && pv.IsMine)
@@ -42,10 +48,15 @@ public class NetworkPlayer : MonoBehaviour
             headRig = origin.transform.Find("Camera Offset/Main Camera");
             leftHandRig = origin.transform.Find("Camera Offset/LeftHand Controller");
             rightHandRig = origin.transform.Find("Camera Offset/RightHand Controller");
+            
             int playerCount = PhotonNetwork.CountOfPlayers;
             Debug.Log("Player count is : " + playerCount);
-            origin.transform.position = instantiationPoint[playerCount].transform.position;
-            origin.transform.rotation = instantiationPoint[playerCount].transform.rotation;
+
+            // teleport the player(s) to their spot in the base hub
+            int playerTeleportPos = networkManager.getPlayerIDZeroBased();
+
+            origin.transform.position = instantiationPoint[playerTeleportPos].transform.position;
+            origin.transform.rotation = instantiationPoint[playerTeleportPos].transform.rotation;
         }
         int newCount = PhotonNetwork.CountOfPlayers;
         pv.RPC("PlayerStats", RpcTarget.AllBuffered, newCount);
@@ -63,6 +74,7 @@ public class NetworkPlayer : MonoBehaviour
             playerCount.text = number.ToString();
         }
     }
+
     [PunRPC]
     void RPC_Array_Update()
     {
@@ -72,8 +84,11 @@ public class NetworkPlayer : MonoBehaviour
             Debug.Log("Randon value : " + randomNumber);
             PhotonNetwork.Destroy(cubeDisable[randomNumber]);
             cubeDisable.RemoveAt(randomNumber);
+            networkManager.numCubesToReplace++;
+            networkManager.playerInLevel = true;
         }
     }
+
     void Update()
     {
         if(pv.IsMine)
