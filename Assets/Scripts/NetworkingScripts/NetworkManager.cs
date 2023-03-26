@@ -17,23 +17,34 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] GameObject teleportMenu;
     [SerializeField] GameObject teleportButton;
     [SerializeField] TMP_Text statusBox;
-
+    private PhotonView pv;
     // public variables used by other scripts
     public int numCubesToReplace = 0;
     public bool playerInLevel = false;
 
     void Start()
     {
+        pv = GetComponent<PhotonView>();
         ConnectToServer();
     }
 
     private void Update()
     {
         // if the number of cubes to place is less than 0, then all cubes are placed and make the teleport system active
-        if (playerInLevel && (numCubesToReplace <= 0))
+        pv.RPC("ActiveTeleport", RpcTarget.AllBuffered);
+        
+    }
+
+    [PunRPC]
+    void ActiveTeleport()
+    {
+        if (pv.IsMine)
         {
-            teleportMenu.SetActive(true); 
-            teleportButton.SetActive(true);
+            if (playerInLevel && (numCubesToReplace <= 0))
+            {
+                teleportMenu.SetActive(true);
+                teleportButton.SetActive(true);
+            }
         }
     }
 
