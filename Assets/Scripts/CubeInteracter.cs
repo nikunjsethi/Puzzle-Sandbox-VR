@@ -28,8 +28,9 @@ public class CubeInteracter : MonoBehaviour
                 PhotonNetwork.Destroy(other.gameObject);
                 networkManager.numCubesToReplace--;
             }
-            else
+            else if(!PhotonNetwork.IsMasterClient)
             {
+                Debug.Log("Not master");
                 pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other.gameObject);                           //only master client can destroy gameobjects
             }
         }

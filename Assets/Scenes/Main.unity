@@ -7354,6 +7354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 225492028}
     m_Modifications:
+    - target: {fileID: 1164987074, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4197962350126133306, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
       propertyPath: m_Name
       value: PuzzleTeleportButton
