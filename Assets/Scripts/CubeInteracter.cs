@@ -46,5 +46,6 @@ public class CubeInteracter : MonoBehaviour
     void DestroyViaMaster(Collider cube)
     {
         PhotonNetwork.Destroy(cube.gameObject);
+        networkManager.numCubesToReplace--;
     }
 }
