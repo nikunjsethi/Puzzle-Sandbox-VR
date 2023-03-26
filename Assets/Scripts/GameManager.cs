@@ -89,14 +89,14 @@ public class GameManager : MonoBehaviour
             menuActive = false;
             pauseMenu.SetActive(false);
             rightHandUIController.SetActive(false);
-            rightHandController.SetActive(true);
+            //rightHandController.SetActive(true);
         }
         else
         {
             menuActive = true;
             pauseMenu.SetActive(true);
             rightHandUIController.SetActive(true);
-            rightHandController.SetActive(false);
+            //rightHandController.SetActive(false);
         }
     }
 
