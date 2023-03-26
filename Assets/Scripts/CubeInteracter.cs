@@ -23,8 +23,15 @@ public class CubeInteracter : MonoBehaviour
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
             }
-            PhotonNetwork.Destroy(other.gameObject);
-            networkManager.numCubesToReplace--;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Destroy(other.gameObject);
+                networkManager.numCubesToReplace--;
+            }
+            else
+            {
+                pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other.gameObject);                           //only master client can destroy gameobjects
+            }
         }
     }
 
@@ -34,4 +41,9 @@ public class CubeInteracter : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    [PunRPC]
+    void DestroyViaMaster(Collider cube)
+    {
+        PhotonNetwork.Destroy(cube.gameObject);
+    }
 }

@@ -4297,6 +4297,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 225492028}
     m_Modifications:
+    - target: {fileID: 1164987074, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4197962350126133306, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
       propertyPath: m_Name
       value: JoinRoomButton
@@ -5865,28 +5869,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4197962350126133306, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
   m_PrefabInstance: {fileID: 1557218161}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1164987074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164987071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 950
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &1183244878
 GameObject:
   m_ObjectHideFlags: 0
@@ -7429,37 +7411,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1478301750}
     - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
       propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1691507462}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TeleportToPuzzle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: JoinRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197962350126133309, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
-      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: NetworkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f7cb29248b458548b8f3c7b276aaf87, type: 3}
 --- !u!1 &1575185565
