@@ -26,7 +26,7 @@ public class LaserControl : MonoBehaviour
     private float rotMultiplier;
     private int direction;
     private List<int> directions = new List<int>();
-    private int[] possibilities = new int[2];
+    private int[] possibilities = { 1, -1 };
     private float distanceToCover;
     private Quaternion originalRotation;
 
@@ -34,6 +34,7 @@ public class LaserControl : MonoBehaviour
     [Header("Line")]
     public Transform forLineCheck;
     public LineRenderer line;
+    public Renderer torusRender;
     public LayerMask layer;
     public int status = 0;
     private bool hitRecorded = false;
@@ -61,6 +62,7 @@ public class LaserControl : MonoBehaviour
     [Header("Hit Display")]
     private int hitAmount = 0;
     public int requiredHits;
+    private int minHits = 10;
     public int changingDisplays;
     public List<HitDisplays> displays = new List<HitDisplays>();
     private float distances;
@@ -90,10 +92,7 @@ public class LaserControl : MonoBehaviour
         char lastChar = goName[goName.Length - 1];
         int digit = int.Parse(lastChar.ToString());
 
-        if (teleporter.spawnCombo.Contains(digit))
-            return true;
-        else
-            return false;
+        return digit < playerAmount;
     }
 
     bool RayCheck(Collider collider)
@@ -117,13 +116,9 @@ public class LaserControl : MonoBehaviour
         startSpeed = 0;
         targetSpeed = rotSpeed;
 
-        requiredHits = playerAmount * 3;
-        if (requiredHits < 10)
-            requiredHits = 10;
+        requiredHits = Mathf.Max(playerAmount * 3, minHits);
 
         //Get the combination
-        possibilities[0] = -1;
-        possibilities[1] = 1;
 
         for (int i = 0; i < requiredHits; i++)
         {
@@ -132,7 +127,7 @@ public class LaserControl : MonoBehaviour
         }
 
         //Set Direction
-        direction = possibilities[0];
+        direction = directions[0];
 
         //Set Line Distance and positions
         lineDist = Mathf.Abs(Vector3.Distance(laserStart.position, forLineCheck.position));
@@ -199,6 +194,7 @@ public class LaserControl : MonoBehaviour
 
             case 2:
 
+                tColor = 0f;
                 tColor += colSpeed * Time.deltaTime;
                 tColor = Mathf.Clamp01(tColor);
                 mainColor = Color.Lerp(currentColor, defColor, tColor);
@@ -350,14 +346,19 @@ public class LaserControl : MonoBehaviour
         }
 
         //Set direction
-        direction = directions[hitAmount - 1];
+        direction = directions[hitAmount];
+        
 
         //Set Speed
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
         //Line Color
+        torusRender.material.SetColor("Color", mainColor);
         line.material.SetColor("Color", mainColor);
         line.material.SetColor("_EmissionColor", mainColor);
+
+        if (hitAmount >= requiredHits)
+            status = 3;
 
         //Raycast
         Ray ray = new Ray(laserStart.position, laserBowl.forward);
@@ -371,11 +372,14 @@ public class LaserControl : MonoBehaviour
 
             if (!RayCheck(hitInfo.collider))
             {
+                if (hitRecorded)
+                    hitRecorded = false;
+
                 return;
             }
-
+            
             //If we hit the correct side
-            if (hitInfo.collider.CompareTag("Symbol" + status) && IsSpawn(hitInfo.collider.gameObject))
+            if (hitInfo.collider.CompareTag("Symbol" + status))
             {
                 SymbolBehavior receiver = hitInfo.collider.GetComponentInParent<SymbolBehavior>();
                 receiver.failAmount = 0;

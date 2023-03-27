@@ -20,6 +20,15 @@ public class SymbolBehavior : MonoBehaviour
     private bool rotating = false;
     public float rotSpeed = 30f;
     private float targetAngle = 0;
+    public float rotationSpeed = 100f;  // Rotation speed in degrees per second
+    public float accelerationTime = 1f; // Time to accelerate and decelerate in seconds
+
+    private Quaternion startRotation;   // Starting rotation of the object
+    private Quaternion targetRotation;  // Target rotation of the object
+    private float currentRotationTime;  // Current rotation time in seconds
+    private float rotationProgress;     // Rotation progress as a fraction (0 to 1)
+    private float resetTime = 1f;
+    private float currentResetTime = 0;
 
 
     //Failure Amount For Cues
@@ -33,8 +42,7 @@ public class SymbolBehavior : MonoBehaviour
         laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         //Find Colors
-        Transform[] children = new Transform[2];
-        children = GetComponentsInChildren<Transform>();
+        Transform[] children = GetComponentsInChildren<Transform>();
 
         if (!children[0].CompareTag("Symbol0"))
             System.Array.Reverse(children);
@@ -44,6 +52,13 @@ public class SymbolBehavior : MonoBehaviour
 
         renderers.Add(children[0].GetComponent<Renderer>());
         renderers.Add(children[1].GetComponent<Renderer>());
+
+        // Store the starting rotation of the object
+        startRotation = transform.localRotation;
+
+        Vector3 currentEuler = startRotation.eulerAngles;
+        currentEuler.y += 180f;
+        targetRotation = Quaternion.Euler(currentEuler);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +75,7 @@ public class SymbolBehavior : MonoBehaviour
     void Update()
     {
         laserState = laserControl.status;
-        modulo = Mathf.Abs(Mathf.Sin(Time.time) * 10);
+        modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
 
         //Setting the color variation cues
         //If the symbol number matches the laserstate, I am modulating the emission intensity with the sin modulo
@@ -91,25 +106,31 @@ public class SymbolBehavior : MonoBehaviour
         //Rotation
         if (rotating)
         {
-            float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotSpeed * Time.deltaTime);
-            transform.eulerAngles = new Vector3(0, 0, angle);
+            // Increment the current rotation time
+            currentRotationTime += Time.deltaTime;
 
-            if (angle >= targetAngle)
-            {
-                if (targetAngle == 360f)
-                    targetAngle = 0;
+            // Calculate the rotation progress as a fraction (0 to 1)
+            rotationProgress = Mathf.Clamp01(currentRotationTime / (2f * accelerationTime));
 
-                angle = targetAngle;
-                //Add bit of delay???
-                rotating = false;
-            }
-        }
-        else
-        {
-            if (targetAngle == 360f)
+            // Use a Lerp function to smoothly interpolate between the start and target rotations
+            Quaternion newRotation = Quaternion.Lerp(startRotation, targetRotation, rotationProgress);
+
+            // Apply the new rotation to the object's transform
+            transform.localRotation = newRotation;
+
+            if (newRotation == targetRotation)
             {
-                targetAngle = 0;
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                currentResetTime += Time.deltaTime;
+
+                if (currentResetTime >= resetTime)
+                {
+                    Vector3 currentEuler = transform.localEulerAngles;
+                    currentEuler.y += 180f;
+                    targetRotation = Quaternion.Euler(currentEuler);
+                    rotating = false;
+                    currentResetTime = 0f;
+                   
+                }
             }
         }
         
