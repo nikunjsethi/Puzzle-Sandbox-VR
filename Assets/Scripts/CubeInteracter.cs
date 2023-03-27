@@ -22,17 +22,20 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
+                pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
+                //if (PhotonNetwork.IsMasterClient)
+                //{
+                //    Debug.Log("Master");
+                //    PhotonNetwork.Destroy(other.gameObject);
+                //    networkManager.numCubesToReplace--;
+                //}
+                //else if (!PhotonNetwork.IsMasterClient)
+                //{
+                //    Debug.Log("Not master");
+                //    pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other.gameObject);                           //only master client can destroy gameobjects
+                //}
             }
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonNetwork.Destroy(other.gameObject);
-                networkManager.numCubesToReplace--;
-            }
-            else if(!PhotonNetwork.IsMasterClient)
-            {
-                Debug.Log("Not master");
-                pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other.gameObject);                           //only master client can destroy gameobjects
-            }
+            
         }
     }
 
