@@ -22,7 +22,10 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
-                pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
+                PhotonNetwork.Destroy(other.gameObject);
+                Destroy(other.gameObject);
+
+                //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
                 //if (PhotonNetwork.IsMasterClient)
                 //{
                 //    Debug.Log("Master");
