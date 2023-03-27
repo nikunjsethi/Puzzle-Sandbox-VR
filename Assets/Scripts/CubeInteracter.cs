@@ -37,6 +37,8 @@ public class CubeInteracter : MonoBehaviour
                     Debug.Log("Not master");
                     pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
                 }
+                //other.gameObject.SetActive(false);
+                //pv.RPC("DestroyViaMaster", RpcTarget.AllBuffered, other);
             }
             
         }
@@ -51,6 +53,8 @@ public class CubeInteracter : MonoBehaviour
     [PunRPC]
     void DestroyViaMaster(Collider cube)
     {
+        Debug.Log("RPC called on everyone");
+        //cube.gameObject.SetActive(false);
         PhotonNetwork.Destroy(cube.gameObject);
         networkManager.numCubesToReplace--;
     }
