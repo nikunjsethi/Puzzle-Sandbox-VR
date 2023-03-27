@@ -31,21 +31,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Update()
     {
         // if the number of cubes to place is less than 0, then all cubes are placed and make the teleport system active
-        pv.RPC("ActiveTeleport", RpcTarget.AllBuffered);
+        if (PhotonNetwork.IsMasterClient && pv.IsMine)
+        {
+            if (playerInLevel && (numCubesToReplace <= 0))
+            {
+                teleportMenu.SetActive(true);
+                teleportButton.SetActive(true);
+                pv.RPC("ActiveTeleport", RpcTarget.AllBuffered);
+            }
+        }
+        
         
     }
 
     [PunRPC]
     void ActiveTeleport()
     {
-        if (pv.IsMine)
-        {
-            if (playerInLevel && (numCubesToReplace <= 0))
-            {
-                teleportMenu.SetActive(true);
-                teleportButton.SetActive(true);
-            }
-        }
+        teleportMenu.SetActive(true);
+        teleportButton.SetActive(true);
     }
 
     public void ConnectToServer()
