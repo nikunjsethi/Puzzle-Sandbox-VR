@@ -369,7 +369,7 @@ public class LaserControl : MonoBehaviour
             line.colorGradient = gradient;
         }
 
-        torusRender.material.SetColor("Color", line.material.GetColor(0));
+        torusRender.material.SetColor("Color", line.material.color);
 
         if (hitAmount >= requiredHits)
             status = 3;
