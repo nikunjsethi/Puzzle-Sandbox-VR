@@ -9,7 +9,7 @@ public class LaserControl : MonoBehaviour
 {
     private int playerAmount;
     public Transform[] spawnPoints = new Transform[10];
-    private Teleporter_Puzzle1 teleporter;
+    private PuzzleMusicControl musicControl;
 
     //Controls
     public Transform laserBowl;
@@ -36,7 +36,7 @@ public class LaserControl : MonoBehaviour
     public LineRenderer line;
     public Renderer torusRender;
     public LayerMask layer;
-    public int status = 0;
+    public int status = 4;
     private bool hitRecorded = false;
     private float lineDist;
 
@@ -110,7 +110,7 @@ public class LaserControl : MonoBehaviour
     void Start()
     {
         playerAmount = PhotonNetwork.CountOfPlayers;
-        teleporter = GameObject.FindGameObjectWithTag("TeleportBack").GetComponent<Teleporter_Puzzle1>();
+        musicControl = GetComponent<PuzzleMusicControl>();
 
         originalRotation = laserBowl.rotation;
         startSpeed = 0;
@@ -160,6 +160,7 @@ public class LaserControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         switch (status)
         {
             case 0:
@@ -343,6 +344,11 @@ public class LaserControl : MonoBehaviour
 
                 }
                 break;
+
+            case 4:
+                if (musicControl.introFinished)
+                    status = 0;
+                break;
         }
 
         //Set direction
@@ -353,9 +359,17 @@ public class LaserControl : MonoBehaviour
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
         //Line Color
-        torusRender.material.SetColor("Color", mainColor);
-        line.material.SetColor("Color", mainColor);
-        line.material.SetColor("_EmissionColor", mainColor);
+        if (status != 3)
+        {
+            line.material.SetColor("Color", mainColor);
+            line.material.SetColor("_EmissionColor", mainColor);
+        }
+        else
+        {
+            line.colorGradient = gradient;
+        }
+
+        torusRender.material.SetColor("Color", line.material.GetColor(0));
 
         if (hitAmount >= requiredHits)
             status = 3;
