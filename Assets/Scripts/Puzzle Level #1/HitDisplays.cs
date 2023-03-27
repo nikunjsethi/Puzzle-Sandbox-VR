@@ -47,7 +47,8 @@ public class HitDisplays : MonoBehaviour
 
         T = Mathf.Clamp01(T);
         //Change the color
-        foreach(MeshRenderer renderer in renderers)
-            renderer.material.color = Color.Lerp(defColor, color2, T);
+        
+        renderers[0].material.color = Color.Lerp(defColor, color2, T);
+        renderers[1].material.color = Color.Lerp(defColor, color2, T);
     }
 }
