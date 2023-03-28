@@ -31,10 +31,11 @@ public class CubeInteracter : MonoBehaviour
                 if (PhotonNetwork.IsMasterClient)
                 {
                     Debug.Log("Master");
-                    PhotonNetwork.Destroy(other.gameObject);
+                    //PhotonNetwork.Destroy(other.gameObject);
+                    Destroy(other.gameObject);
                     networkManager.numCubesToReplace--;
                 }
-                else
+                //else
                 {
                     Debug.Log("Not master");
 
