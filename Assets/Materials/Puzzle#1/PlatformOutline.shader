@@ -3,7 +3,7 @@ Shader "Custom/PlatformOutline" {
         _MainTex ("Texture", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
         _OutlineColor ("Outline Color", Color) = (1,0,0,1)
-        _OutlineWidth ("Outline Width", Range(0.0, 0.1)) = 0.01
+        _OutlineWidth ("Outline Width", Range(0.0, 5.0)) = 0.01
     }
 
     SubShader {

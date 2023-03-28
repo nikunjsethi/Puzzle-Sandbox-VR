@@ -76,7 +76,7 @@ public class SymbolBehavior : MonoBehaviour
     {
         laserState = laserControl.status;
         modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
-
+        /*
         //Setting the color variation cues
         //If the symbol number matches the laserstate, I am modulating the emission intensity with the sin modulo
         foreach (Renderer renderer in renderers)
@@ -101,7 +101,7 @@ public class SymbolBehavior : MonoBehaviour
                     renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(indexOfRend)] * 0);
                     break;
             }
-        }
+        }*/
 
         //Rotation
         if (rotating)

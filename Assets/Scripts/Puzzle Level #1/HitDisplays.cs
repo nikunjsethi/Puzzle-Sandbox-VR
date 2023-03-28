@@ -20,12 +20,6 @@ public class HitDisplays : MonoBehaviour
     {
         laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
-        //Fill up the array
-        MeshRenderer ren1 = GetComponent<MeshRenderer>();
-        MeshRenderer ren2 = GetComponentInChildren<MeshRenderer>();
-        renderers[0] = ren1;
-        renderers[1] = ren2;
-
         //Find which index of the master list this display is
         listIndex = laserControl.displays.IndexOf(this);
     }
@@ -47,8 +41,10 @@ public class HitDisplays : MonoBehaviour
 
         T = Mathf.Clamp01(T);
         //Change the color
-        
-        renderers[0].material.color = Color.Lerp(defColor, color2, T);
-        renderers[1].material.color = Color.Lerp(defColor, color2, T);
+
+        Color color = Color.Lerp(defColor, color2, T);
+
+        renderers[0].material.SetColor("_Color", color);
+        renderers[1].material.SetColor("_Color", color);
     }
 }

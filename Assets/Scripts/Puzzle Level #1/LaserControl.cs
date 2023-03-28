@@ -130,10 +130,10 @@ public class LaserControl : MonoBehaviour
         direction = directions[0];
 
         //Set Line Distance and positions
-        lineDist = Mathf.Abs(Vector3.Distance(laserStart.position, forLineCheck.position));
+        lineDist = Mathf.Abs(Vector3.Distance(transform.TransformPoint(laserStart.position), transform.TransformPoint(forLineCheck.position)));
         line.positionCount = 2;
         line.SetPosition(0, laserStart.position);
-        line.SetPosition(1, laserStart.position + lineDist * laserStart.right);
+        line.SetPosition(1, laserStart.position + lineDist * laserStart.transform.forward);
 
         //Check how many displays we'll be changing
         //Proportionally
@@ -174,7 +174,7 @@ public class LaserControl : MonoBehaviour
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
+                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
 
                 break;
             case 1:
@@ -189,7 +189,7 @@ public class LaserControl : MonoBehaviour
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
+                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
 
                 break;
 
@@ -354,7 +354,6 @@ public class LaserControl : MonoBehaviour
         //Set direction
         direction = directions[hitAmount];
         
-
         //Set Speed
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
@@ -362,14 +361,13 @@ public class LaserControl : MonoBehaviour
         if (status != 3)
         {
             line.material.SetColor("Color", mainColor);
-            line.material.SetColor("_EmissionColor", mainColor);
         }
         else
         {
             line.colorGradient = gradient;
         }
 
-        torusRender.material.SetColor("Color", line.material.color);
+        torusRender.material.SetColor("Color", mainColor);
 
         if (hitAmount >= requiredHits)
             status = 3;
@@ -439,7 +437,7 @@ public class LaserControl : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, laserStart.position + lineDist * laserStart.forward);
+            line.SetPosition(1, laserStart.position + lineDist * laserStart.transform.forward);
 
             if (hitRecorded)
                 hitRecorded = false;

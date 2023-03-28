@@ -16,7 +16,7 @@ public class PuzzleMusicControl : MonoBehaviour
     //Bool to check if into finished playing
     private bool introStarted;
     public bool introFinished = false;
-    private float delayMusic = 6f;
+    private float delayMusic = 4f;
     private float currentTime = 0f;
 
     //Laser sound position
