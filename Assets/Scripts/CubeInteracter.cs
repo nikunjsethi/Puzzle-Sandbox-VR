@@ -57,7 +57,14 @@ public class CubeInteracter : MonoBehaviour
     [PunRPC]
     void DestroyViaMaster(Collider cube)
     {
-        Debug.Log("RPC called on everyone");
+        Debug.Log("RPC called on master client only!!");
+
+        // get the ownership of the photon view of the cube
+        PhotonView pvCube = cube.gameObject.GetComponent<PhotonView>();
+        pvCube.RequestOwnership();
+
+        Debug.Log("Owner of this cube is:" + pvCube.Owner);
+
         //cube.gameObject.SetActive(false);
         PhotonNetwork.Destroy(cube.gameObject);
         networkManager.numCubesToReplace--;
