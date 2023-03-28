@@ -21,7 +21,7 @@ public class NetworkPlayer : MonoBehaviour
     public List<GameObject> instantiationPoint;                                 //the points where the players will instantiate around the table
     public List<GameObject> cubeDisable;
 
-    public TextMeshProUGUI playerCount;
+   // public TextMeshProUGUI playerCount;
     public NetworkManager networkManager;
 
 
@@ -30,7 +30,7 @@ public class NetworkPlayer : MonoBehaviour
         pv = GetComponent<PhotonView>();
         if (pv.IsMine)
         {
-            playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
+            //playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
             networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         }
     }
@@ -71,7 +71,7 @@ public class NetworkPlayer : MonoBehaviour
         if (PhotonNetwork.IsConnected && pv.IsMine)
         {
             number = PhotonNetwork.CountOfPlayers;
-            playerCount.text = number.ToString();
+            //playerCount.text = number.ToString();
         }
     }
 

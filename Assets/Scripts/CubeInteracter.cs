@@ -22,9 +22,11 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
+                //networkManager.numCubesToReplace--;
                 //PhotonNetwork.Destroy(other.gameObject);
                 //Destroy(other.gameObject);
-
+                //PhotonView newPhotonView = other.GetComponent<PhotonView>();
+                //newPhotonView.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
                 //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
                 if (PhotonNetwork.IsMasterClient)
                 {
@@ -32,15 +34,16 @@ public class CubeInteracter : MonoBehaviour
                     PhotonNetwork.Destroy(other.gameObject);
                     networkManager.numCubesToReplace--;
                 }
-                else if (!PhotonNetwork.IsMasterClient)
+                else
                 {
                     Debug.Log("Not master");
+
                     pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
                 }
                 //other.gameObject.SetActive(false);
                 //pv.RPC("DestroyViaMaster", RpcTarget.AllBuffered, other);
             }
-            
+
         }
     }
 
@@ -55,7 +58,7 @@ public class CubeInteracter : MonoBehaviour
     {
         Debug.Log("RPC called on everyone");
         //cube.gameObject.SetActive(false);
-        PhotonNetwork.Destroy(cube.gameObject);
+        Destroy(cube.gameObject);
         networkManager.numCubesToReplace--;
     }
 }
