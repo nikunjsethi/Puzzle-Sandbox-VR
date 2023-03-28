@@ -4574,7 +4574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &768004229
 Transform:
   m_ObjectHideFlags: 0
@@ -4597,7 +4597,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768004228}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d66f9c18121f049cba48e6532ef230e3, type: 3}
@@ -4890,19 +4890,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 5, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1149058817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-  m_PrefabInstance: {fileID: 1473363559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1149058818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149058817}
-  m_Enabled: 1
+  m_GameObject: {fileID: 919132148346946358}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e07cae0ab7e34dbaad44a16473de355, type: 3}
   m_Name: 
@@ -5017,7 +5012,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149058817}
+  m_GameObject: {fileID: 919132148346946358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 496778366d73f412e9ec583a6a271870, type: 3}
@@ -5025,7 +5020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intro: {fileID: 794257710}
   soundtrack: {fileID: 1327524947}
-  laser: {fileID: 768004230}
   introFinished: 0
 --- !u!1 &1204772844
 GameObject:
@@ -5267,71 +5261,6 @@ Transform:
   m_Father: {fileID: 6645823804849446518}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1473363559
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 196.63
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 84.4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -467.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_Name
-      value: 'Level_Manager '
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
-      propertyPath: m_TagString
-      value: LevelManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4031a1899d0e24846a2bc357a02ae7bd, type: 3}
 --- !u!1 &1710316289
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,7 +5315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753517733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -14.875366, y: 0.48, z: 23.899994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5441,7 +5370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1877823059
 Transform:
   m_ObjectHideFlags: 0
@@ -5500,7 +5429,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -30, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -6037,6 +5966,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &543450652268616076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148346946358}
+  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 196.63, y: 84.4, z: -467.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450653223592876
 Transform:
   m_ObjectHideFlags: 0
@@ -6426,6 +6370,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &919132148346946358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543450652268616076}
+  - component: {fileID: 1149058818}
+  - component: {fileID: 1149058819}
+  - component: {fileID: 919132148346946359}
+  m_Layer: 0
+  m_Name: 'Level_Manager '
+  m_TagString: LevelManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &919132148346946359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148346946358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703a7fd5dfb954cada6e13f575528b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbols:
+  - {fileID: 6529816260309747345}
+  - {fileID: 5400993125271038397}
+  - {fileID: 8649401839771228254}
+  - {fileID: 6126198080155714110}
+  - {fileID: 7200438352120255883}
+  - {fileID: 7942449256672190845}
+  - {fileID: 9181258533140971838}
+  - {fileID: 7475113770828088041}
+  - {fileID: 8408678440867505199}
+  - {fileID: 7335388111133976506}
+  displays: []
+  teleporter: {fileID: 0}
+  floor: {fileID: 0}
+  door: {fileID: 0}
 --- !u!1 &919132149505390870
 GameObject:
   m_ObjectHideFlags: 0
@@ -8143,14 +8133,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2490194675929097041}
-  m_LocalRotation: {x: 0.5513073, y: 0.44278693, z: -0.44278705, w: 0.55130726}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -12.140498, y: -0.2258439, z: -12.140497}
-  m_LocalScale: {x: 6.949388, y: 6.949388, z: 0.12903707}
+  m_LocalScale: {x: 26.5742, y: 26.5742, z: 0.493433}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653223592876}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -77.54}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!23 &3321517347645024460
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10030,6 +10020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -10528,6 +10519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -10920,6 +10912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -11285,7 +11278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -11561,7 +11553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -11692,7 +11683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -11762,6 +11752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -12210,6 +12201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -12301,7 +12293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -12331,6 +12322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -12790,6 +12782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -12893,7 +12886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -13035,7 +13027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -13314,6 +13305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -13553,7 +13545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -13706,6 +13697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
@@ -13839,7 +13831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -13885,7 +13876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -14110,7 +14100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserControl: {fileID: 0}
   T: 0
   speed: 0.3
   changing: 0
@@ -14296,6 +14285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSide: 0
   rotSpeed: 30
   rotationSpeed: 100
   accelerationTime: 1
