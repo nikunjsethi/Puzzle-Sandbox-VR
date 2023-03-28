@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CubeInteracter : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
+                other.gameObject.GetComponent<XRGrabNetworkInteractable>().deleteMe = true;
+                networkManager.numCubesToReplace--;
 
                 //DestroyViaMaster(other.gameObject);
                 //networkManager.numCubesToReplace--;
@@ -33,9 +36,8 @@ public class CubeInteracter : MonoBehaviour
                 //if (PhotonNetwork.IsMasterClient)
                 {
                     //Debug.Log("Master");
-                    PhotonNetwork.Destroy(other.gameObject);
+                    //PhotonNetwork.Destroy(other.gameObject);
                     //Destroy(other.gameObject);
-                    networkManager.numCubesToReplace--;
                 }
                 //else
                 {
@@ -67,7 +69,7 @@ public class CubeInteracter : MonoBehaviour
 
             // get the ownership of the photon view of the cube
             PhotonView pvCube = cube.GetComponent<PhotonView>();
-            pvCube.RequestOwnership();
+            //pvCube.RequestOwnership();
 
             Debug.Log("Owner of this cube is:" + pvCube.Owner);
 
