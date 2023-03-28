@@ -59,7 +59,7 @@ public class CubeInteracter : MonoBehaviour
     {
         Debug.Log("RPC called on everyone");
         //cube.gameObject.SetActive(false);
-        Destroy(cube.gameObject);
+        PhotonNetwork.Destroy(cube.gameObject);
         networkManager.numCubesToReplace--;
     }
 }
