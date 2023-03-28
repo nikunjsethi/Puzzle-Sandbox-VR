@@ -22,6 +22,8 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
+
+                DestroyViaMaster(other.gameObject);
                 //networkManager.numCubesToReplace--;
                 //PhotonNetwork.Destroy(other.gameObject);
                 //Destroy(other.gameObject);
@@ -30,7 +32,7 @@ public class CubeInteracter : MonoBehaviour
                 //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
                 //if (PhotonNetwork.IsMasterClient)
                 {
-                    Debug.Log("Master");
+                    //Debug.Log("Master");
                     //PhotonNetwork.Destroy(other.gameObject);
                     //Destroy(other.gameObject);
                     //networkManager.numCubesToReplace--;
@@ -39,7 +41,7 @@ public class CubeInteracter : MonoBehaviour
                 {
                     //Debug.Log("Not master");
 
-                    pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
+                    //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
                 }
                 //other.gameObject.SetActive(false);
                 //pv.RPC("DestroyViaMaster", RpcTarget.AllBuffered, other);
@@ -55,18 +57,23 @@ public class CubeInteracter : MonoBehaviour
     }
 
     [PunRPC]
-    void DestroyViaMaster(Collider cube)
+    void DestroyViaMaster(GameObject cube)
     {
-        Debug.Log("RPC called on master client only!!");
+        Debug.Log("Trying to destroy via Master client only!");
 
-        // get the ownership of the photon view of the cube
-        PhotonView pvCube = cube.gameObject.GetComponent<PhotonView>();
-        pvCube.RequestOwnership();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("RPC called on master client only!!");
 
-        Debug.Log("Owner of this cube is:" + pvCube.Owner);
+            // get the ownership of the photon view of the cube
+            PhotonView pvCube = cube.GetComponent<PhotonView>();
+            pvCube.RequestOwnership();
 
-        //cube.gameObject.SetActive(false);
-        PhotonNetwork.Destroy(cube.gameObject);
-        networkManager.numCubesToReplace--;
+            Debug.Log("Owner of this cube is:" + pvCube.Owner);
+
+            //cube.gameObject.SetActive(false);
+            PhotonNetwork.Destroy(cube);
+            networkManager.numCubesToReplace--;
+        }
     }
 }
