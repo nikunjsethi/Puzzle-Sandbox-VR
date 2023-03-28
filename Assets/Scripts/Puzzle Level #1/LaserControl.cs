@@ -391,9 +391,7 @@ public class LaserControl : MonoBehaviour
 
             if (!RayCheck(hitInfo.collider))
             {
-                if (hitRecorded)
-                    hitRecorded = false;
-
+                
                 return;
             }
 

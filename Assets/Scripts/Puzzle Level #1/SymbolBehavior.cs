@@ -7,14 +7,9 @@ public class SymbolBehavior : MonoBehaviour
     private LaserControl laserControl;
     private int laserState;
     //Colors
-    private Color oColorDef;
-    private Color oColor;
-    private Color xColorDef;
-    private Color xColor;
     private List<Color> colors = new List<Color>();
     private List<Renderer> renderers = new List<Renderer>();
-    private float modulo;
-    private float modulo2;
+    public int activeSide = 0;
 
     //Turning
     private bool rotating = false;
@@ -39,7 +34,8 @@ public class SymbolBehavior : MonoBehaviour
     void Start()
     {
         //Find Laser Controller
-        laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
+
+        // laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         //Find Colors
         Transform[] children = GetComponentsInChildren<Transform>();
@@ -74,8 +70,8 @@ public class SymbolBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        laserState = laserControl.status;
-        modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
+        //laserState = laserControl.status;
+        //modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
         /*
         //Setting the color variation cues
         //If the symbol number matches the laserstate, I am modulating the emission intensity with the sin modulo
@@ -118,15 +114,21 @@ public class SymbolBehavior : MonoBehaviour
             // Apply the new rotation to the object's transform
             transform.localRotation = newRotation;
 
-            if (newRotation == targetRotation)
+            if (rotationProgress == 1)
             {
+                if (activeSide == 0)
+                {
+                    activeSide = 1;
+                }
+                else
+                    activeSide = 0;
+
                     startRotation = targetRotation;
-                    rotationProgress = 0;
+                    currentRotationTime = 0;
                     Vector3 currentEuler = targetRotation.eulerAngles;
                     currentEuler.x += 180f;
                     targetRotation = Quaternion.Euler(currentEuler);
                     rotating = false;
-                    
             }
         }
         

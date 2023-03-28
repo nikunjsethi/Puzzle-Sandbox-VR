@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitDisplays : MonoBehaviour
 {
-    public LaserControl laserControl;
+    //public LaserControl laserControl;
 
     public float T = 0;
     public float speed = 0.3f;
@@ -15,36 +15,36 @@ public class HitDisplays : MonoBehaviour
     MeshRenderer[] renderers = new MeshRenderer[2];
     public Color defColor = Color.red;
     public Color color2 = Color.green;
+    private Color rendCol;
 
     private void Start()
     {
-        laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
+        //laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         //Find which index of the master list this display is
-        listIndex = laserControl.displays.IndexOf(this);
+        //listIndex = laserControl.displays.IndexOf(this);
+
+        rendCol = defColor;
     }
     // Update is called once per frame
     void Update()
     {
-        if (changing && laserControl.status != 2)
+        if (changing)
         {
-            if ((listIndex != 0 && laserControl.displays[listIndex - 1].T >= 0.5f) || listIndex == 0)
-            {
-               T += speed * Time.deltaTime;
-            }
+            rendCol = color2;
         }
-        else if (changing && laserControl.status == 2)
+        else
         {
-            if((listIndex != laserControl.displays.Count - 1 && laserControl.displays[listIndex + 1].T <= 0.5f) || listIndex == laserControl.displays.Count - 1)
-                T -= speed * Time.deltaTime;
+            rendCol = defColor;
         }
+            
 
-        T = Mathf.Clamp01(T);
+        //T = Mathf.Clamp01(T);
         //Change the color
 
-        Color color = Color.Lerp(defColor, color2, T);
+        //Color color = Color.Lerp(defColor, color2, T);
 
-        renderers[0].material.SetColor("_Color", color);
-        renderers[1].material.SetColor("_Color", color);
+        renderers[0].material.SetColor("_Color", rendCol);
+        renderers[1].material.SetColor("_Color", rendCol);
     }
 }
