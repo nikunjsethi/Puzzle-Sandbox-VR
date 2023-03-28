@@ -28,18 +28,18 @@ public class CubeInteracter : MonoBehaviour
                 //PhotonView newPhotonView = other.GetComponent<PhotonView>();
                 //newPhotonView.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
                 //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);
-                if (PhotonNetwork.IsMasterClient)
+                //if (PhotonNetwork.IsMasterClient)
                 {
                     Debug.Log("Master");
-                    //PhotonNetwork.Destroy(other.gameObject);
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
+                    //Destroy(other.gameObject);
                     networkManager.numCubesToReplace--;
                 }
                 //else
                 {
-                    Debug.Log("Not master");
+                    //Debug.Log("Not master");
 
-                    pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
+                    //pv.RPC("DestroyViaMaster", RpcTarget.MasterClient, other);                           //only master client can destroy gameobjects
                 }
                 //other.gameObject.SetActive(false);
                 //pv.RPC("DestroyViaMaster", RpcTarget.AllBuffered, other);
