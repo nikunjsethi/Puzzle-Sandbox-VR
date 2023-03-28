@@ -32,6 +32,7 @@ public class LaserControl : MonoBehaviour
 
     //Line Renderer for Laser
     [Header("Line")]
+    public Transform constrain;
     public Transform forLineCheck;
     public LineRenderer line;
     public Renderer torusRender;
@@ -39,6 +40,7 @@ public class LaserControl : MonoBehaviour
     public int status = 4;
     private bool hitRecorded = false;
     private float lineDist;
+    private Vector3 dirVec;
 
     [Header("Line Colors")]
     //Set to private as we're grabbing the colors from HitDisplay function or setting them later in the code
@@ -99,7 +101,7 @@ public class LaserControl : MonoBehaviour
     {
         if (!collider.CompareTag("Symbol0") && !collider.CompareTag("Symbol1"))
             return false;
-        
+
         if (!IsSpawn(collider.gameObject) || status >= 2 || hitRecorded)
             return false;
 
@@ -129,11 +131,13 @@ public class LaserControl : MonoBehaviour
         //Set Direction
         direction = directions[0];
 
+        Transform lineTR = line.transform;
         //Set Line Distance and positions
-        lineDist = Mathf.Abs(Vector3.Distance(transform.TransformPoint(laserStart.position), transform.TransformPoint(forLineCheck.position)));
+        lineDist = Vector3.Distance(transform.TransformPoint(line.transform.position), transform.TransformPoint(forLineCheck.position));
+        dirVec = transform.TransformDirection(line.transform.forward);
         line.positionCount = 2;
-        line.SetPosition(0, laserStart.position);
-        line.SetPosition(1, laserStart.position + lineDist * laserStart.transform.forward);
+        line.SetPosition(0, line.transform.position);
+        line.SetPosition(1, line.transform.position + lineDist * dirVec);
 
         //Check how many displays we'll be changing
         //Proportionally
@@ -160,7 +164,10 @@ public class LaserControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        dirVec = transform.TransformDirection(line.transform.forward);
+        //Vector3 point2 = laserStart.position + lineDist * dirVec;
+        //point2.z = constrain.position.z;
+
         switch (status)
         {
             case 0:
@@ -205,7 +212,7 @@ public class LaserControl : MonoBehaviour
                 T = Mathf.Clamp01(T);
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, currentRotSpeed * Time.deltaTime, 0f);
+                laserBowl.Rotate(0f, 0f, -1 * currentRotSpeed * Time.deltaTime);
 
 
                 if (laserBowl.rotation.z <= 1f || laserBowl.rotation.z >= 359f)
@@ -286,14 +293,14 @@ public class LaserControl : MonoBehaviour
 
                                 float time1Val = Mathf.Lerp(curEnd, newEnd, curve1.Evaluate(gradT));
                                 colorKeys[1].time = time1Val;
-                               
+
 
                                 if (gradT >= 0.75f)
                                 {
                                     float gradT2 = Mathf.Clamp01((gradT - 0.75f) / 0.25f);
 
                                     float alphaVal = Mathf.Lerp(1f, 0f, curve1.Evaluate(gradT2));
-                                    
+
 
                                     alphaKeys[1].alpha = alphaVal;
 
@@ -353,14 +360,14 @@ public class LaserControl : MonoBehaviour
 
         //Set direction
         direction = directions[hitAmount];
-        
+
         //Set Speed
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
         //Line Color
         if (status != 3)
         {
-            line.material.SetColor("Color", mainColor);
+            line.material.SetColor("_Color", mainColor);
         }
         else
         {
@@ -373,13 +380,13 @@ public class LaserControl : MonoBehaviour
             status = 3;
 
         //Raycast
-        Ray ray = new Ray(laserStart.position, laserBowl.forward);
+        Ray ray = new Ray(laserStart.position, dirVec);
         RaycastHit hitInfo;
-        bool hit = Physics.Raycast(ray, out hitInfo, 100f, layer);
+        bool hit = Physics.Raycast(ray, out hitInfo, 100f);
 
         if (hit)
         {
-            Vector3 hitPos = hitInfo.point;
+            Vector3 hitPos = laserStart.transform.InverseTransformPoint(hitInfo.point);
             line.SetPosition(1, hitPos);
 
             if (!RayCheck(hitInfo.collider))
@@ -389,7 +396,7 @@ public class LaserControl : MonoBehaviour
 
                 return;
             }
-            
+
             //If we hit the correct side
             if (hitInfo.collider.CompareTag("Symbol" + status))
             {
@@ -437,7 +444,7 @@ public class LaserControl : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, laserStart.position + lineDist * laserStart.transform.forward);
+            line.SetPosition(1, line.transform.position + lineDist * dirVec);
 
             if (hitRecorded)
                 hitRecorded = false;

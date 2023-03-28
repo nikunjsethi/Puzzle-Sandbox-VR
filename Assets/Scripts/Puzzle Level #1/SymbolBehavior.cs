@@ -57,7 +57,7 @@ public class SymbolBehavior : MonoBehaviour
         startRotation = transform.localRotation;
 
         Vector3 currentEuler = startRotation.eulerAngles;
-        currentEuler.y += 180f;
+        currentEuler.x += 180f;
         targetRotation = Quaternion.Euler(currentEuler);
     }
 
@@ -66,7 +66,7 @@ public class SymbolBehavior : MonoBehaviour
         //Tag For hands?
         if (other.CompareTag("Player") && !rotating)
         {
-            targetAngle += 180;
+            //targetRotation.x += 180;
             rotating = true;
         }
     }
@@ -120,17 +120,13 @@ public class SymbolBehavior : MonoBehaviour
 
             if (newRotation == targetRotation)
             {
-                currentResetTime += Time.deltaTime;
-
-                if (currentResetTime >= resetTime)
-                {
-                    Vector3 currentEuler = transform.localEulerAngles;
-                    currentEuler.y += 180f;
+                    startRotation = targetRotation;
+                    rotationProgress = 0;
+                    Vector3 currentEuler = targetRotation.eulerAngles;
+                    currentEuler.x += 180f;
                     targetRotation = Quaternion.Euler(currentEuler);
                     rotating = false;
-                    currentResetTime = 0f;
-                   
-                }
+                    
             }
         }
         

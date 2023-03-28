@@ -35,10 +35,6 @@ public class PuzzleMusicControl : MonoBehaviour
             source.outputAudioMixerGroup = gameSounds; 
         }
 
-        
-        
-
-
         laserTR = laser.GetComponent<Transform>();
         laserControl = GetComponent<LaserControl>();
     }
