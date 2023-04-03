@@ -32,7 +32,6 @@ public class LaserControl : MonoBehaviour
 
     //Line Renderer for Laser
     [Header("Line")]
-    public Transform constrain;
     public Transform forLineCheck;
     public LineRenderer line;
     public Renderer torusRender;
@@ -50,12 +49,6 @@ public class LaserControl : MonoBehaviour
     private Color mainColor;
     // Fail color - currently at black
     public Color defColor = Color.black;
-    //Gradients for final transition
-    private Gradient gradient;
-    private GradientColorKey[] colorKeys = new GradientColorKey[2];
-    private GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
-    private Color startColor = Color.blue;
-    private Color endColor = Color.white;
 
     [SerializeField] float tColor = 0;
     public float colSpeed = 0.45f;
@@ -86,6 +79,8 @@ public class LaserControl : MonoBehaviour
     private float doorCurTime = 0f;
     public Renderer doorMiddle;
     public Renderer doorFrame;
+    private Color32 doorCol;
+    private Color32 midCol;
 
     //Checking to see if the panel belongs to a spawn point
     bool IsSpawn(GameObject toCheck)
@@ -133,8 +128,8 @@ public class LaserControl : MonoBehaviour
 
         Transform lineTR = line.transform;
         //Set Line Distance and positions
-        lineDist = Vector3.Distance(transform.TransformPoint(line.transform.position), transform.TransformPoint(forLineCheck.position));
-        dirVec = transform.TransformDirection(line.transform.forward);
+        lineDist = Vector3.Distance(line.transform.position, forLineCheck.position) ;
+        dirVec = laserBowl.forward;
         line.positionCount = 2;
         line.SetPosition(0, line.transform.position);
         line.SetPosition(1, line.transform.position + lineDist * dirVec);
@@ -147,24 +142,12 @@ public class LaserControl : MonoBehaviour
         color1 = displays[0].defColor;
         color2 = displays[0].color2;
 
-        //Set laser gradient color
-        colorKeys[0].color = startColor;
-        colorKeys[0].time = 0.0f;
-        colorKeys[1].color = endColor;
-        colorKeys[1].time = 2.0f;
-
-        // Set the alpha value of each color to 1.0 (fully opaque)
-        alphaKeys[0].alpha = 1.0f;
-        alphaKeys[0].time = 0.0f;
-        alphaKeys[1].alpha = 1.0f;
-        alphaKeys[1].time = 1.0f;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        dirVec = transform.TransformDirection(line.transform.forward);
+        dirVec = laserBowl.forward;
         //Vector3 point2 = laserStart.position + lineDist * dirVec;
         //point2.z = constrain.position.z;
 
@@ -251,7 +234,7 @@ public class LaserControl : MonoBehaviour
 
                     float alpha1 = Mathf.Lerp(startAlpha1, endAlpha1, curve1.Evaluate(doorT));
 
-                    Color32 midCol = doorMiddle.material.GetColor("_Color");
+                    midCol = doorMiddle.material.GetColor("_Color");
                     midCol.a = (byte)alpha1;
 
                     if (doorT >= 1f / 3f)
@@ -259,8 +242,8 @@ public class LaserControl : MonoBehaviour
                         float doorT2 = Mathf.Clamp01((doorT - 1f / 3f) / (2f / 3f));
                         float alpha2 = Mathf.Lerp(0f, 255f, curve.Evaluate(doorT2));
 
-                        Color32 doorCol = doorFrame.material.GetColor("_Color");
-                        midCol.a = (byte)alpha2;
+                        doorCol = doorFrame.material.GetColor("_Color");
+                        doorCol.a = (byte)alpha2;
 
                         if (doorT == 1f)
                         {
@@ -283,73 +266,39 @@ public class LaserControl : MonoBehaviour
                             Vector3 rotVal = Vector3.Lerp(rot1, rot2, curve.Evaluate(firstFinalT));
                             Vector3 scVal = Vector3.Lerp(sc1, sc2, curve.Evaluate(firstFinalT));
 
-                            if (finalT >= 0.25f)
+                            //Launch the second transition
+                            if (finalT >= 0.75f)
                             {
-                                //Set the gradient
-                                float gradT = Mathf.Clamp01((finalT - 0.25f) / 0.5f);
+                                // adjust progress to start from 0 at 0.75
+                                float secondFinalT = (finalT - 0.75f) / 0.25f;
 
-                                float newEnd = 0f;
-                                float curEnd = colorKeys[1].time;
+                                Vector3 rotVal2 = Vector3.Lerp(rot2, rot3, curve.Evaluate(secondFinalT));
+                                Vector3 scVal2 = Vector3.Lerp(sc2, sc3, curve.Evaluate(secondFinalT));
 
-                                float time1Val = Mathf.Lerp(curEnd, newEnd, curve1.Evaluate(gradT));
-                                colorKeys[1].time = time1Val;
+                                // use the next values for the rest of the time
+                                rotVal = rotVal2;
+                                scVal = scVal2;
 
+                                Vector3 lastLinePos = Vector3.Lerp(line.GetPosition(1), line.GetPosition(0), secondFinalT);
 
-                                if (gradT >= 0.75f)
-                                {
-                                    float gradT2 = Mathf.Clamp01((gradT - 0.75f) / 0.25f);
-
-                                    float alphaVal = Mathf.Lerp(1f, 0f, curve1.Evaluate(gradT2));
-
-
-                                    alphaKeys[1].alpha = alphaVal;
-
-
-                                    if (gradT >= 0.9f)
-                                    {
-                                        float startT = Mathf.Clamp01((gradT2 - 0.9f) / 0.1f);
-
-                                        float newStart = -1f;
-                                        float curStart = colorKeys[0].time;
-
-                                        float startVal = Mathf.Lerp(0f, newStart, curve.Evaluate(startT));
-                                        float alphaVal2 = Mathf.Lerp(1f, 0f, curve.Evaluate(startT));
-
-                                        colorKeys[0].time = startVal;
-                                        alphaKeys[0].time = startVal;
-                                        alphaKeys[0].alpha = alphaVal2;
-
-                                        if (gradT == 1f)
-                                        {
-                                            line.gameObject.SetActive(false);
-                                        }
-                                    }
-                                }
-
-
-                                //Launch the second transition
-                                if (finalT >= 0.75f)
-                                {
-                                    // adjust progress to start from 0 at 0.75
-                                    float secondFinalT = (finalT - 0.75f) / 0.25f;
-
-                                    Vector3 rotVal2 = Vector3.Lerp(rot2, rot3, curve.Evaluate(secondFinalT));
-                                    Vector3 scVal2 = Vector3.Lerp(sc2, sc3, curve.Evaluate(secondFinalT));
-
-                                    // use the next values for the rest of the time
-                                    rotVal = rotVal2;
-                                    scVal = scVal2;
-                                }
+                                line.SetPosition(1, lastLinePos);
                             }
+                            
 
                             //Set the size of the floor
                             floor.eulerAngles = rotVal;
                             floor.localScale = scVal;
+
+                            
                         }
                     }
-
-
+                    
                 }
+
+                //Change colors of the doors
+                doorFrame.material.SetColor("_Color", doorCol);
+                doorMiddle.material.SetColor("_Color", midCol);
+
                 break;
 
             case 4:
@@ -365,15 +314,7 @@ public class LaserControl : MonoBehaviour
         currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
 
         //Line Color
-        if (status != 3)
-        {
-            line.material.SetColor("_Color", mainColor);
-        }
-        else
-        {
-            line.colorGradient = gradient;
-        }
-
+        line.material.SetColor("_Color", mainColor);
         torusRender.material.SetColor("Color", mainColor);
 
         if (hitAmount >= requiredHits)
@@ -391,7 +332,6 @@ public class LaserControl : MonoBehaviour
 
             if (!RayCheck(hitInfo.collider))
             {
-                
                 return;
             }
 
@@ -430,14 +370,12 @@ public class LaserControl : MonoBehaviour
                 receiver.failAmount++;
 
                 distances = (laserBowl.rotation.z - originalRotation.z) / hitAmount;
-                direction = -1;
                 distanceToCover = laserBowl.rotation.z;
 
                 currentColor = line.material.color;
 
                 hitRecorded = true;
                 status = 2;
-
             }
         }
         else

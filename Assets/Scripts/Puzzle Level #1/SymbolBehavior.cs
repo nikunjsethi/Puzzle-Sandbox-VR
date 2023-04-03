@@ -35,7 +35,7 @@ public class SymbolBehavior : MonoBehaviour
     {
         //Find Laser Controller
 
-        // laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
+        laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         //Find Colors
         Transform[] children = GetComponentsInChildren<Transform>();
