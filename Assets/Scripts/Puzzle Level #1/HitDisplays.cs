@@ -7,6 +7,7 @@ public class HitDisplays : MonoBehaviour
     public LaserControl laserControl;
 
     public float T = 0;
+    public float clampVal;
     public float speed = 0.3f;
     public bool changing = false;
     public int listIndex;
@@ -48,8 +49,8 @@ public class HitDisplays : MonoBehaviour
 
         if (T == 1 || (T == 0 && laserControl.status == 2))
             changing = false;
-            
-            
+
+
         T = Mathf.Clamp01(T);
         //Change the color
 

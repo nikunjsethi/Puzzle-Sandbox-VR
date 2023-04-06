@@ -17,12 +17,8 @@ public class LaserControl : MonoBehaviour
 
     [Header("Rotation")]
     [Range(0, 1f)]
-    private float T = 0;
-    public float lerpSpeed = 0.3f;
     public float rotSpeed = 30f;
     private float currentRotSpeed;
-    private float targetSpeed;
-    private float startSpeed;
     private float rotMultiplier;
     private int direction;
     private List<int> directions = new List<int>();
@@ -32,33 +28,31 @@ public class LaserControl : MonoBehaviour
 
     //Line Renderer for Laser
     [Header("Line")]
-    public Transform forLineCheck;
     public LineRenderer line;
     public Renderer torusRender;
-    public LayerMask layer;
     public int status = 4;
     private bool hitRecorded = false;
     private float lineDist;
     private Vector3 dirVec;
+    private float resetTime = 2f;
+    private float currentResetTime = 0;
 
     [Header("Line Colors")]
     //Set to private as we're grabbing the colors from HitDisplay function or setting them later in the code
     private Color color1;
     private Color color2;
-    private Color currentColor;
     private Color mainColor;
     // Fail color - currently at black
     public Color defColor = Color.black;
 
-    [SerializeField] float tColor = 0;
-    public float colSpeed = 0.45f;
 
     //Display for hits
     [Header("Hit Display")]
     private int hitAmount = 0;
     public int requiredHits;
     private int minHits = 10;
-    public int changingDisplays;
+    public float changingDisplays;
+    private float displayChangeVal;
     public List<HitDisplays> displays = new List<HitDisplays>();
     private float distances;
 
@@ -110,8 +104,7 @@ public class LaserControl : MonoBehaviour
         musicControl = GetComponent<PuzzleMusicControl>();
 
         originalRotation = laserBowl.rotation;
-        startSpeed = 0;
-        targetSpeed = rotSpeed;
+        currentRotSpeed = rotSpeed;
 
         requiredHits = Mathf.Max(playerAmount * 3, minHits);
 
@@ -128,7 +121,7 @@ public class LaserControl : MonoBehaviour
 
         Transform lineTR = line.transform;
         //Set Line Distance and positions
-        lineDist = Vector3.Distance(line.transform.position, forLineCheck.position) ;
+        lineDist = 30f;
         dirVec = laserBowl.forward;
         line.positionCount = 2;
         line.SetPosition(0, line.transform.position);
@@ -136,11 +129,16 @@ public class LaserControl : MonoBehaviour
 
         //Check how many displays we'll be changing
         //Proportionally
-        changingDisplays = Mathf.FloorToInt(displays.Count / requiredHits);
+        changingDisplays = displays.Count / requiredHits;
+        displayChangeVal = 0;
 
         //Set Laser colors
         color1 = displays[0].defColor;
         color2 = displays[0].color2;
+
+        //Set floor value
+        floor.transform.localScale = tr1.localScale;
+        floor.transform.rotation = tr1.rotation;
 
     }
 
@@ -148,64 +146,55 @@ public class LaserControl : MonoBehaviour
     void Update()
     {
         dirVec = laserBowl.forward;
-        //Vector3 point2 = laserStart.position + lineDist * dirVec;
-        //point2.z = constrain.position.z;
 
         switch (status)
         {
             case 0:
+                currentResetTime = 0;
+                mainColor = color1;
 
-                tColor -= colSpeed * Time.deltaTime;
-                tColor = Mathf.Clamp01(tColor);
-                mainColor = Color.Lerp(color1, color2, tColor);
-
-                //Speed Lerp
-                T += lerpSpeed * Time.deltaTime;
-                T = Mathf.Clamp01(T);
+                curRotTime = 0;
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
+                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
 
                 break;
             case 1:
+                currentResetTime = 0;
+                mainColor = color2;
 
-                tColor += colSpeed * Time.deltaTime;
-                tColor = Mathf.Clamp01(tColor);
-                mainColor = Color.Lerp(color1, color2, tColor);
-
-
-                //Speed Lerp
-                T += lerpSpeed * Time.deltaTime;
-                T = Mathf.Clamp01(T);
+                curRotTime = 0;
 
                 //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, currentRotSpeed * direction * Time.deltaTime);
+                laserBowl.Rotate(0f, currentRotSpeed * direction * Time.deltaTime, 0f);
 
                 break;
 
             case 2:
 
-                tColor = 0f;
-                tColor += colSpeed * Time.deltaTime;
-                tColor = Mathf.Clamp01(tColor);
-                mainColor = Color.Lerp(currentColor, defColor, tColor);
+                mainColor = defColor;
 
-                //Speed Lerp
-                T = Mathf.InverseLerp(0, distanceToCover, laserBowl.rotation.z);
-                T = Mathf.Clamp01(T);
+                //Start Rotating back the laser
+                curRotTime += Time.deltaTime;
 
-                //Rotation for the laser
-                laserBowl.Rotate(0f, 0f, -1 * currentRotSpeed * Time.deltaTime);
+                fRotT = Mathf.Clamp01(curRotTime / rotTime);
 
+                Quaternion lasRot = laserBowl.rotation;
 
-                if (laserBowl.rotation.z <= 1f || laserBowl.rotation.z >= 359f)
+                Quaternion finLasRot = Quaternion.Slerp(lasRot, originalRotation, curve1.Evaluate(fRotT));
+
+                //Set the Laser bowl rotation
+                laserBowl.rotation = finLasRot;
+
+                if (fRotT == 1)
                 {
-                    laserBowl.rotation = originalRotation;
-                    T = 0;
                     direction = directions[0];
-                    targetSpeed = rotSpeed;
+                    currentRotSpeed = rotSpeed;
                     hitAmount = 0;
-                    status = 0;
+                    if (directions[0] == 1)
+                        status = 0;
+                    else
+                        status = 1;
                 }
                 break;
 
@@ -216,12 +205,12 @@ public class LaserControl : MonoBehaviour
 
                 fRotT = Mathf.Clamp01(curRotTime / rotTime);
 
-                Vector3 lasRot = laserBowl.eulerAngles;
+                lasRot = laserBowl.rotation;
 
-                Vector3 finLasRot = Vector3.Lerp(lasRot, Vector3.zero, curve1.Evaluate(fRotT));
+                finLasRot = Quaternion.Slerp(lasRot, originalRotation, curve1.Evaluate(fRotT));
 
                 //Set the Laser bowl rotation
-                laserBowl.eulerAngles = finLasRot;
+                laserBowl.rotation = finLasRot;
 
                 if (fRotT == 1)
                 {
@@ -303,15 +292,26 @@ public class LaserControl : MonoBehaviour
 
             case 4:
                 if (musicControl.introFinished)
-                    status = 0;
+                {
+                    if (direction == 1)
+                        status = 0;
+                    else
+                        status = 1;
+                }
+                    
                 break;
         }
 
         //Set direction
         direction = directions[hitAmount];
 
-        //Set Speed
-        currentRotSpeed = Mathf.Lerp(startSpeed, targetSpeed, T);
+        if (status < 2)
+        {
+            if (direction == 1)
+                status = 0;
+            else
+                status = 1;
+        }
 
         //Line Color
         line.material.SetColor("_Color", mainColor);
@@ -327,7 +327,7 @@ public class LaserControl : MonoBehaviour
 
         if (hit)
         {
-            Vector3 hitPos = laserStart.transform.InverseTransformPoint(hitInfo.point);
+            Vector3 hitPos = hitInfo.point;
             line.SetPosition(1, hitPos);
 
             if (!RayCheck(hitInfo.collider))
@@ -343,20 +343,16 @@ public class LaserControl : MonoBehaviour
 
                 //Add the hit
                 hitAmount++;
-
-                rotMultiplier = Random.Range(2, 9) * 0.25f;
+                rotMultiplier = 1.15f;
 
                 //Speed up the laser
-                T *= 1 / rotMultiplier;
-                targetSpeed *= rotMultiplier;
-
-                //Get the current laser color
-                currentColor = line.material.color;
-
+                currentRotSpeed *= rotMultiplier;
 
                 //Change color of display
-                for (int i = (hitAmount - 1) * changingDisplays; i < hitAmount * changingDisplays; i++)
-                {
+                displayChangeVal += changingDisplays;
+
+                for (int i = (int)((hitAmount - 1) * changingDisplays); i < displayChangeVal; i++){
+                
                     displays[i].changing = true;
                 }
 
@@ -372,8 +368,7 @@ public class LaserControl : MonoBehaviour
                 distances = (laserBowl.rotation.z - originalRotation.z) / hitAmount;
                 distanceToCover = laserBowl.rotation.z;
 
-                currentColor = line.material.color;
-
+                displayChangeVal = 0;
                 hitRecorded = true;
                 status = 2;
             }
