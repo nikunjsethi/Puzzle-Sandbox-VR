@@ -365,8 +365,8 @@ public class LaserControl : MonoBehaviour
                 SymbolBehavior receiver = hitInfo.collider.GetComponentInParent<SymbolBehavior>();
                 receiver.failAmount++;
 
-                distances = (laserBowl.rotation.z - originalRotation.z) / hitAmount;
-                distanceToCover = laserBowl.rotation.z;
+                distances = (laserBowl.rotation.y - originalRotation.y) / hitAmount;
+                distanceToCover = laserBowl.rotation.y;
 
                 displayChangeVal = 0;
                 hitRecorded = true;
