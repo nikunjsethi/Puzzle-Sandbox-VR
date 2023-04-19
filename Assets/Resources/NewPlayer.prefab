@@ -278,7 +278,6 @@ MonoBehaviour:
   RightHand: {fileID: 874843158674469878}
   instantiationPoint: []
   cubeDisable: []
-  playerCount: {fileID: 0}
   networkManager: {fileID: 0}
 --- !u!114 &5432282646331160005
 MonoBehaviour:

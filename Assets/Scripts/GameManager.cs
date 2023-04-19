@@ -31,7 +31,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputActionAsset inputActions;
     [SerializeField] GameObject rightHandUIController;
     [SerializeField] GameObject rightHandController;
+    [SerializeField] GameObject leftHandController;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] TMP_Dropdown movementSystem;
+    [SerializeField] GameObject locomotionSystem;
 
     // private variables used by this script
     private AsyncOperation async;
@@ -88,18 +91,36 @@ public class GameManager : MonoBehaviour
         {
             menuActive = false;
             pauseMenu.SetActive(false);
-            rightHandUIController.SetActive(false);
-            rightHandController.SetActive(true);
+            if (movementSystem.value == 0)
+            {
+                rightHandUIController.SetActive(false);
+            }
+            //rightHandController.SetActive(true);
         }
         else
         {
             menuActive = true;
             pauseMenu.SetActive(true);
             rightHandUIController.SetActive(true);
-            rightHandController.SetActive(false);
+            //rightHandController.SetActive(false);
         }
     }
 
+    public void OnChangeMovement()
+    {
+        if(movementSystem.value==0)                                                                     //Continuous Movement
+        {
+            Debug.Log("Continuous");
+            locomotionSystem.GetComponent<ActionBasedContinuousMoveProvider>().enabled = true;
+            rightHandUIController.SetActive(false);
+        }
+        else if(movementSystem.value==1)                                                                //Teleport Movement
+        {
+            Debug.Log("Teleport");
+            locomotionSystem.GetComponent<ActionBasedContinuousMoveProvider>().enabled = false;
+            rightHandUIController.SetActive(true);
+        }
+    }
     /// <summary>
     /// Exits the game - used by option menu
     /// </summary>

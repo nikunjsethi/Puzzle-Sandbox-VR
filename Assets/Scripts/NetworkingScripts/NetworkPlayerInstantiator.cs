@@ -10,7 +10,7 @@ public class NetworkPlayerInstantiator : MonoBehaviourPunCallbacks
     public List<Transform> instantiationPoints;
     // Keep the instantiated player object around
     private GameObject spawnedPlayerPrefab;
-
+    public GameObject[] locations;
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();

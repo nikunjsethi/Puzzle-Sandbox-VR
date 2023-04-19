@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CubeInteracter : MonoBehaviour
 {
@@ -22,9 +23,9 @@ public class CubeInteracter : MonoBehaviour
             if (other.CompareTag("Interactable"))
             {
                 pv.RPC("RPC_ColorChanger",RpcTarget.AllBuffered);
+                other.gameObject.GetComponent<XRGrabNetworkInteractable>().deleteMe = true;
+                networkManager.numCubesToReplace--;
             }
-            PhotonNetwork.Destroy(other.gameObject);
-            networkManager.numCubesToReplace--;
         }
     }
 

@@ -7,16 +7,12 @@ public class SymbolBehavior : MonoBehaviour
     private LaserControl laserControl;
     private int laserState;
     //Colors
-    private Color oColorDef;
-    private Color oColor;
-    private Color xColorDef;
-    private Color xColor;
     private List<Color> colors = new List<Color>();
     private List<Renderer> renderers = new List<Renderer>();
-    private float modulo;
-    private float modulo2;
+    public int activeSide = 0;
 
-    //Turning
+
+    [Header("Turning")]//Turning
     private bool rotating = false;
     public float rotSpeed = 30f;
     private float targetAngle = 0;
@@ -30,15 +26,21 @@ public class SymbolBehavior : MonoBehaviour
     private float resetTime = 1f;
     private float currentResetTime = 0;
 
-
+    [Header("Fail Cues")]
     //Failure Amount For Cues
     public int failAmount = 0;
+    private Color targetColor;
+    private float T = 0f;
+    public float lerpSpeed = 25f;
+    private Color mainColor;
+    private Renderer renderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //Find Laser Controller
+
         laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         //Find Colors
@@ -57,8 +59,10 @@ public class SymbolBehavior : MonoBehaviour
         startRotation = transform.localRotation;
 
         Vector3 currentEuler = startRotation.eulerAngles;
-        currentEuler.y += 180f;
+        currentEuler.x += 180f;
         targetRotation = Quaternion.Euler(currentEuler);
+
+        renderer = gameObject.GetComponentInParent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,7 +70,7 @@ public class SymbolBehavior : MonoBehaviour
         //Tag For hands?
         if (other.CompareTag("Player") && !rotating)
         {
-            targetAngle += 180;
+            //targetRotation.x += 180;
             rotating = true;
         }
     }
@@ -74,34 +78,20 @@ public class SymbolBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        laserState = laserControl.status;
-        modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
+        targetColor = laserControl.mainColor;
 
-        //Setting the color variation cues
-        //If the symbol number matches the laserstate, I am modulating the emission intensity with the sin modulo
-        foreach (Renderer renderer in renderers)
+        if (failAmount >= 1)
         {
-            int indexOfRend = renderers.IndexOf(renderer);
+            float lerpVal = Mathf.Sin(lerpSpeed * Time.deltaTime);
 
-            switch (laserState)
-            {
-                case < 2 when renderer.CompareTag("Symbol" + laserState) && failAmount < 2:
-                    renderer.material.SetColor("_EmissionColor", colors[laserState] * modulo);
-                    break;
-                case < 2 when renderer.CompareTag("Symbol" + laserState) && failAmount >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[laserState] * modulo * 4);
-                    break;
-                case < 2 when !renderer.CompareTag("Symbol" + laserState) && failAmount < 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(laserState - 1)] * 0.5f);
-                    break;
-                case < 2 when !renderer.CompareTag("Symbol" + laserState) && failAmount >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(laserState - 1)] * modulo * 2);
-                    break;
-                case >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(indexOfRend)] * 0);
-                    break;
-            }
+            mainColor = Color.Lerp(Color.white, targetColor, (lerpVal + 1f) / 2f);
         }
+        else
+        {
+            mainColor = targetColor;
+        }
+
+        renderer.material.SetColor("_Color", mainColor);
 
         //Rotation
         if (rotating)
@@ -118,19 +108,21 @@ public class SymbolBehavior : MonoBehaviour
             // Apply the new rotation to the object's transform
             transform.localRotation = newRotation;
 
-            if (newRotation == targetRotation)
+            if (rotationProgress == 1)
             {
-                currentResetTime += Time.deltaTime;
-
-                if (currentResetTime >= resetTime)
+                if (activeSide == 0)
                 {
-                    Vector3 currentEuler = transform.localEulerAngles;
-                    currentEuler.y += 180f;
+                    activeSide = 1;
+                }
+                else
+                    activeSide = 0;
+
+                    startRotation = targetRotation;
+                    currentRotationTime = 0;
+                    Vector3 currentEuler = targetRotation.eulerAngles;
+                    currentEuler.x += 180f;
                     targetRotation = Quaternion.Euler(currentEuler);
                     rotating = false;
-                    currentResetTime = 0f;
-                   
-                }
             }
         }
         

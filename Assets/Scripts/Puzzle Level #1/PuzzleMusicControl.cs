@@ -5,19 +5,16 @@ using UnityEngine.Audio;
 
 public class PuzzleMusicControl : MonoBehaviour
 {
-    private LaserControl laserControl;
+    //private LaserControl laserControl;
 
     //Audio Sources for Music
     public AudioSource intro;
     public AudioSource soundtrack;
-    public AudioSource laser;
+    
     private AudioMixer mixer;
     private AudioMixerGroup gameSounds;
     //Bool to check if into finished playing
     public bool introFinished = false;
-
-    //Laser sound position
-    private Transform laserTR;
 
     // Start is called before the first frame update
     void Start()
@@ -25,34 +22,30 @@ public class PuzzleMusicControl : MonoBehaviour
         mixer = Resources.Load("AudioMixer") as AudioMixer;
         gameSounds = mixer.FindMatchingGroups("GameSounds")[0];
 
-        AudioSource[] sources = { intro, soundtrack, laser };
+        AudioSource[] sources = { intro, soundtrack };
 
         foreach (AudioSource source in sources)
         {
             source.outputAudioMixerGroup = gameSounds; 
         }
 
-        float introLength = intro.clip.length;
-        intro.Play();
-        soundtrack.PlayDelayed(introLength);
-
-
-        laserTR = laser.GetComponent<Transform>();
-        laserControl = GetComponent<LaserControl>();
+        //laserTR = laser.GetComponent<Transform>();
+        //laserControl = GetComponent<LaserControl>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (soundtrack.isPlaying)
+        
+        if (!intro.isPlaying && !introFinished)
         {
+            soundtrack.Play();
             introFinished = true;
-            laser.Play();
         }
 
-        Vector3 position = laserControl.line.GetPosition(1);
+        //Vector3 position = laserControl.line.GetPosition(1);
 
-        laser.transform.position = position;
+        //laser.transform.position = position;
 
 
     }

@@ -7,47 +7,68 @@ public class HitDisplays : MonoBehaviour
     public LaserControl laserControl;
 
     public float T = 0;
-    public float speed = 0.3f;
-    public bool changing = false;
+    public float clampVal;
+    public float speed = 0.4f;
+    public bool changing;
+    public bool reducing;
     public int listIndex;
 
     [SerializeField]
     MeshRenderer[] renderers = new MeshRenderer[2];
     public Color defColor = Color.red;
     public Color color2 = Color.green;
+    private Color rendCol;
 
     private void Start()
     {
+        changing = false;
+        reducing = false;
+
+        clampVal = 0;
+
         laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
-        //Fill up the array
-        MeshRenderer ren1 = GetComponent<MeshRenderer>();
-        MeshRenderer ren2 = GetComponentInChildren<MeshRenderer>();
-        renderers[0] = ren1;
-        renderers[1] = ren2;
-
-        //Find which index of the master list this display is
-        listIndex = laserControl.displays.IndexOf(this);
+        rendCol = defColor;
     }
     // Update is called once per frame
     void Update()
     {
-        if (changing && laserControl.status != 2)
+        if (changing)
         {
-            if ((listIndex != 0 && laserControl.displays[listIndex - 1].T >= 0.5f) || listIndex == 0)
+            if (!reducing)
             {
-               T += speed * Time.deltaTime;
+                if (listIndex == 0 || laserControl.displays[listIndex - 1].T > 0.6f)
+                    T += speed * Time.deltaTime;
+            }
+            else
+            {
+                if (listIndex + 1 == laserControl.displays.Count || laserControl.displays[listIndex + 1].T < 0.75f)
+                {
+                    T -= speed * 2 * Time.deltaTime;
+                }
             }
         }
-        else if (changing && laserControl.status == 2)
+
+        if (laserControl.status == 3)
+            changing = true;
+
+        if (laserControl.status == 2 && T <= 0.1f)
         {
-            if((listIndex != laserControl.displays.Count - 1 && laserControl.displays[listIndex + 1].T <= 0.5f) || listIndex == laserControl.displays.Count - 1)
-                T -= speed * Time.deltaTime;
+            changing = false;
+            reducing = false;
+            clampVal = 0;
+            T = 0;
         }
 
-        T = Mathf.Clamp01(T);
+
+        T = Mathf.Clamp(T, 0, clampVal);
         //Change the color
-        foreach(MeshRenderer renderer in renderers)
-            renderer.material.color = Color.Lerp(defColor, color2, T);
+
+        rendCol = Color.Lerp(defColor, color2, T);
+
+        renderers[0].material.SetColor("_Color", rendCol);
+        renderers[1].material.SetColor("_Color", rendCol);
+        renderers[0].material.SetColor("_EmissionColor", rendCol);
+        renderers[1].material.SetColor("_EmissionColor", rendCol);
     }
 }
