@@ -14,13 +14,7 @@ public class PuzzleMusicControl : MonoBehaviour
     private AudioMixer mixer;
     private AudioMixerGroup gameSounds;
     //Bool to check if into finished playing
-    private bool introStarted;
     public bool introFinished = false;
-    private float delayMusic = 4f;
-    private float currentTime = 0f;
-
-    //Laser sound position
-    private Transform laserTR;
 
     // Start is called before the first frame update
     void Start()
@@ -42,20 +36,10 @@ public class PuzzleMusicControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-
-        float introLength = intro.clip.length;
-
-        if (currentTime >= delayMusic && !introStarted)
-        {
-            intro.Play();
-            soundtrack.PlayDelayed(introLength);
-            introStarted = true;
-        }
         
-
-        if (soundtrack.isPlaying)
+        if (!intro.isPlaying && !introFinished)
         {
+            soundtrack.Play();
             introFinished = true;
         }
 

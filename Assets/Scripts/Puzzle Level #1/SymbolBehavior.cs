@@ -11,7 +11,8 @@ public class SymbolBehavior : MonoBehaviour
     private List<Renderer> renderers = new List<Renderer>();
     public int activeSide = 0;
 
-    //Turning
+
+    [Header("Turning")]//Turning
     private bool rotating = false;
     public float rotSpeed = 30f;
     private float targetAngle = 0;
@@ -25,9 +26,14 @@ public class SymbolBehavior : MonoBehaviour
     private float resetTime = 1f;
     private float currentResetTime = 0;
 
-
+    [Header("Fail Cues")]
     //Failure Amount For Cues
     public int failAmount = 0;
+    private Color targetColor;
+    private float T = 0f;
+    public float lerpSpeed = 25f;
+    private Color mainColor;
+    private Renderer renderer;
 
 
     // Start is called before the first frame update
@@ -55,6 +61,8 @@ public class SymbolBehavior : MonoBehaviour
         Vector3 currentEuler = startRotation.eulerAngles;
         currentEuler.x += 180f;
         targetRotation = Quaternion.Euler(currentEuler);
+
+        renderer = gameObject.GetComponentInParent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,34 +78,20 @@ public class SymbolBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //laserState = laserControl.status;
-        //modulo = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * Time.time) * 10);
-        /*
-        //Setting the color variation cues
-        //If the symbol number matches the laserstate, I am modulating the emission intensity with the sin modulo
-        foreach (Renderer renderer in renderers)
-        {
-            int indexOfRend = renderers.IndexOf(renderer);
+        targetColor = laserControl.mainColor;
 
-            switch (laserState)
-            {
-                case < 2 when renderer.CompareTag("Symbol" + laserState) && failAmount < 2:
-                    renderer.material.SetColor("_EmissionColor", colors[laserState] * modulo);
-                    break;
-                case < 2 when renderer.CompareTag("Symbol" + laserState) && failAmount >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[laserState] * modulo * 4);
-                    break;
-                case < 2 when !renderer.CompareTag("Symbol" + laserState) && failAmount < 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(laserState - 1)] * 0.5f);
-                    break;
-                case < 2 when !renderer.CompareTag("Symbol" + laserState) && failAmount >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(laserState - 1)] * modulo * 2);
-                    break;
-                case >= 2:
-                    renderer.material.SetColor("_EmissionColor", colors[Mathf.Abs(indexOfRend)] * 0);
-                    break;
-            }
-        }*/
+        if (failAmount >= 1)
+        {
+            float lerpVal = Mathf.Sin(lerpSpeed * Time.deltaTime);
+
+            mainColor = Color.Lerp(Color.white, targetColor, (lerpVal + 1f) / 2f);
+        }
+        else
+        {
+            mainColor = targetColor;
+        }
+
+        renderer.material.SetColor("_Color", mainColor);
 
         //Rotation
         if (rotating)

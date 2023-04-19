@@ -8,8 +8,9 @@ public class HitDisplays : MonoBehaviour
 
     public float T = 0;
     public float clampVal;
-    public float speed = 0.3f;
-    public bool changing = false;
+    public float speed = 0.4f;
+    public bool changing;
+    public bool reducing;
     public int listIndex;
 
     [SerializeField]
@@ -20,10 +21,12 @@ public class HitDisplays : MonoBehaviour
 
     private void Start()
     {
-        laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
+        changing = false;
+        reducing = false;
 
-        //Find which index of the master list this display is
-        listIndex = laserControl.displays.IndexOf(this);
+        clampVal = 0;
+
+        laserControl = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LaserControl>();
 
         rendCol = defColor;
     }
@@ -32,26 +35,33 @@ public class HitDisplays : MonoBehaviour
     {
         if (changing)
         {
-            if (laserControl.status != 2)
+            if (!reducing)
             {
-                if (laserControl.displays[listIndex - 1].T > 0.75f || listIndex == 0)
+                if (listIndex == 0 || laserControl.displays[listIndex - 1].T > 0.6f)
                     T += speed * Time.deltaTime;
             }
             else
             {
-                if (laserControl.displays[listIndex + 1].T < 0.75f || (listIndex + 1 != laserControl.displays.Count && laserControl.displays[listIndex + 1].T == 0))
+                if (listIndex + 1 == laserControl.displays.Count || laserControl.displays[listIndex + 1].T < 0.75f)
                 {
-                    T -= speed * Time.deltaTime;
+                    T -= speed * 2 * Time.deltaTime;
                 }
-
             }
         }
 
-        if (T == 1 || (T == 0 && laserControl.status == 2))
+        if (laserControl.status == 3)
+            changing = true;
+
+        if (laserControl.status == 2 && T <= 0.1f)
+        {
             changing = false;
+            reducing = false;
+            clampVal = 0;
+            T = 0;
+        }
 
 
-        T = Mathf.Clamp01(T);
+        T = Mathf.Clamp(T, 0, clampVal);
         //Change the color
 
         rendCol = Color.Lerp(defColor, color2, T);
