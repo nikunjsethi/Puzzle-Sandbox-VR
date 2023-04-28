@@ -273,9 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f89e9d09c317842831fd9f2e3304d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Head: {fileID: 8465213842846965438}
-  LeftHand: {fileID: 7773717367998211665}
-  RightHand: {fileID: 874843158674469878}
   instantiationPoint: []
   cubeDisable: []
   networkManager: {fileID: 0}
@@ -557,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Custom Right Hand Model
       objectReference: {fileID: 0}
+    - target: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!4 &7930965163383422906 stripped
@@ -574,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
       propertyPath: m_Name
       value: Custom Left Hand Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
       propertyPath: m_RootOrder
