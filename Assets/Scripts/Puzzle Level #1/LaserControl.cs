@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Newtonsoft.Json.Linq;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class LaserControl : MonoBehaviour
 {
