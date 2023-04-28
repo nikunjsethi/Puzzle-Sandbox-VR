@@ -404,6 +404,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+  deleteMe: 0
 --- !u!1 &547561644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1208,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab948c434549ad34ab315024c5116c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMenu: {fileID: 0}
+  joinRoomButton: {fileID: 0}
+  teleportMenu: {fileID: 0}
+  teleportButton: {fileID: 0}
+  statusBox: {fileID: 0}
+  numCubesToReplace: 0
+  playerInLevel: 0
 --- !u!4 &1395811171
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,6 +1242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db524c5c121fd24c9b68fcb262bc62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instantiationPoints: []
+  locations: []
 --- !u!1 &1456635145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
