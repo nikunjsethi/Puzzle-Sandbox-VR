@@ -1,0 +1,324 @@
+ManifestFileVersion: 0
+CRC: 1645474298
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ff59e32490e7cebde53cbe496bf73a2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3af9cadb6469e9c89ab9782ebabd7cc0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: af26de26c990e88409ad9c77bd247b0f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8cf6d7f07293ceb45bb4121e509661d7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6321a7d9112988841b7223ac6a925bfc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 507e5741cec8a42dc964c8e0a4b55bd6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2705215ac5b84b70bacc50632be6e391, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0df83d9cfe88c7641b20a46c5228418c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ad074644ff568a14187a3690cfbd7534, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 22d6d143693d26042907d2430a3477dc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 455698a23ea64d1438d545455ecaf6a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 93f52792dd821664a896b3c1c0418b9e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c852cc8bbc743374083cab6f7df68bb7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b3d881e962d099f4a8eb492ef7e9a8c0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 99b4daedc5e674a429acdf1e77da6a55, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae58c0b74b23bf64e856c46783d1f181, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dd7fea91fe63f4e1b884ef1e16a975c3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dba1a179e553446f0a08606778f559f1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ab2114bdc8544297b417dfefe9f1e410, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7f702d55cf3968342842e2466dbff672, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 52f89e9d09c317842831fd9f2e3304d9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 191492db6e452eb468b95433ec162164, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 98fac77b304554f238a61572f5720187, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91175dcc15224463780e01a8a98b1b60, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c565458f43b8ad4469a2ca341c210318, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e4713853bfdc862459ae0bb66b2b3750, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4fde14656bc40455ba65844c093b79a3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3863570e7e6387a40ae4f323d83291e5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fd08475b23aa548b7b9d28397d430b32, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 124
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 143
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 221
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: MouseLookHelper
+- AssemblyName: PhotonRealtime
+  ClassName: Photon.Realtime.AppSettings
+- AssemblyName: PhotonUnityNetworking
+  ClassName: Photon.Pun.PhotonAnimatorView/SynchronizedLayer
+- AssemblyName: PhotonUnityNetworking
+  ClassName: Photon.Pun.PhotonAnimatorView/SynchronizedParameter
+- AssemblyName: PhotonVoice.API
+  ClassName: Photon.Voice.AudioOutDelayControl/PlayDelayConfig
+- AssemblyName: PhotonVoice.API
+  ClassName: Photon.Voice.IOS.AudioSessionParameters
+- AssemblyName: PhotonVoice
+  ClassName: Photon.Voice.Unity.Recorder/NativeAndroidMicrophoneSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Sprite
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_SpriteCharacter
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_SpriteGlyph
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Style
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.ActivateEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.DeactivateEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.HoverEnterEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.HoverExitEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.SelectEnterEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.SelectExitEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.XRInteractableEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
+- Assets/Resources/ONSPSettings.asset
+- Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Resources/BigAsteroid.prefab
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBear.prefab
+- Assets/Resources/NewPlayer.prefab
+- Assets/Resources/AudioMixer.mixer
+- Assets/Oculus/Voice/Resources/voicesdk_texts_en-us.json
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/DepthOverwrite.shader
+- Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset
+- Assets/Oculus/Voice/Lib/Wit.ai/Resources/wit-ai-title.png
+- Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Resources/Player Controller.prefab
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Hellephant.prefab
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Boy-Local.prefab
+- Assets/Oculus/VR/Resources/OVRMRCameraFrameLit.shader
+- Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+- Assets/Oculus/VR/Resources/Cubemap Blit.shader
+- Assets/Resources/OVRBuildConfig.asset
+- Assets/Oculus/VR/Resources/Underlay Impostor.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Boy.prefab
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_AlphaBlended.shader
+- Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Resources/Spaceship.prefab
+- Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+- Assets/Oculus/VR/Resources/Underlay Transparent Occluder.shader
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_Opaque.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Speaker.prefab
+- Assets/Photon/PhotonVoice/Demos/Resources/readme.txt
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Boy-Remote.prefab
+- Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Hellephant-Local.prefab
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_AlphaCutout.shader
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_AlphaToMask.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBunny-Remote.prefab
+- Assets/Oculus/VR/Resources/OVRMRUnlitTransparent.shader
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/UIOverlay.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/Hellephant-Remote.prefab
+- Assets/Oculus/Voice/Lib/Wit.ai/Resources/witai_texts_en-us.json
+- Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Resources/My Robot
+  Kyle -done-.prefab
+- Assets/Oculus/VR/Resources/OVRMRUnlit.shader
+- Assets/Oculus/Voice/Resources/voicesdk_heroart.png
+- Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
+- Assets/Resources/OVRPlatformToolSettings.asset
+- Assets/TextMesh Pro/Resources/TMP Settings.asset
+- Assets/Oculus/VR/Resources/OVRMRCameraFrame.shader
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/UnderlayTransparentOccluderImposter.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBear-Local.prefab
+- Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Resources/SmallAsteroid.prefab
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBunny-Local.prefab
+- Assets/Resources/InteractableCube.prefab
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBunny.prefab
+- Assets/Resources/OculusRuntimeSettings.asset
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_Underlay.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Resources/ZomBear-Remote.prefab
+- Assets/Resources/OculusPlatformSettings.asset
+- Assets/Oculus/Interaction/Runtime/Resources/Shaders/Imposter_Underlay_AA.shader
+- Assets/Photon/PhotonVoice/Demos/DemoVoiceProximityChat/Resources/Character.prefab
+- Assets/Photon/PhotonVoice/Demos/Resources/CAD-GXL2200-Condenser-vs-Audigy5rx-Sound-Test.mp3
+- Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+- Assets/Photon/PhotonVoice/Demos/Resources/music_zapsplat_atmospheric_tension.mp3
+- Assets/Oculus/Voice/Lib/Wit.ai/Resources/continue-with-fb.png
+- Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset
+- Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt
+- Assets/Oculus/VR/Resources/Texture2D Blit.shader
+- Assets/XRI/Settings/Resources/InteractionLayerSettings.asset
+- Assets/Oculus/Voice/Lib/Wit.ai/Resources/witai.png
+- Assets/Oculus/VR/Resources/Unlit Transparent Color.shader
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_prefab0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_ttf0

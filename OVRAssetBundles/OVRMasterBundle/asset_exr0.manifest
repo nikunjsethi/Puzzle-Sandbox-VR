@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 820364830
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 26323568a0472738223266b88a9f996e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e6e651bdddca608c77d51fff2e12d033
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/Puzzle_1/ReflectionProbe-0.exr
+- Assets/Scenes/Puzzle_1/Lightmap-0_comp_light.exr
+Dependencies: []

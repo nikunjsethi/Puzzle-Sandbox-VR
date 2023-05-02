@@ -1,0 +1,101 @@
+ManifestFileVersion: 0
+CRC: 1451295486
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f3073b979c965f3ac69868897dc51773
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2fe49a41cae082f4cc4147f6c7004458
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 84
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 56032097b1ab3a540b3349af62f82310, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ecd1062ecb075db4a83f03b03ba8100d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 561fe8366de5e7d4fae882c491e3d7dc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b47856a33046ce40862a2fddb86623b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f775fcfeef42d0543abbd1e03dfe74fb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5178bc8574ce2bf4388e787a2e2af326, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3861555276e1a07489d3c0971e091e46, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f892af86578f82443a9682973148029a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6937544d08e2ba34da6ff4ab90cbfd84, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 258
+  Script: {instanceID: 0}
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Oculus/Avatar2/Example/Scenes/SimpleExample.unity
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_exr0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_png0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_prefab0

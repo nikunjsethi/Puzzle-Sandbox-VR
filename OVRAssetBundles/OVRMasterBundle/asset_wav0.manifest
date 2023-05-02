@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3233290070
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a5b5e41c748b9011ce7c499d744a9079
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Audio/Puzzle_Level/levelMusic.wav
+- Assets/Audio/Puzzle_Level/preStart.wav
+- Assets/Audio/Puzzle_Level/laser.wav
+- Assets/Audio/forHub.wav
+Dependencies: []

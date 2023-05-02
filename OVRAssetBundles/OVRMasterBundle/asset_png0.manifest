@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 320078998
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 617162e92de08b1e5a961bb2cbd5efad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.png
+- Assets/Photon/PhotonVoice/Icons/voice-0128.png
+- Packages/com.unity.inputsystem/InputSystem/Editor/Icons/TrackedPoseDriver@4x.png
+- Assets/SciFiProps/Textures/Screen1Tex_HeightMap.png
+- Assets/Oculus/Interaction/Samples/Scripts/HandGrabUse/Effects/WaterSpray/Drops_Tiled_Normal-Map.png
+- Assets/Scenes/Puzzle_1/Lightmap-0_comp_dir.png
+- Assets/SciFiProps/Textures/GlassTankTex_Occlusion.png
+- Assets/SciFiProps/Textures/Screen1Tex_Occlusion.png
+- Assets/SciFiProps/Textures/GlassTankTex_HeightMap.png
+- Assets/SciFiProps/Textures/GlassTankTex_NormalMap.png
+- Assets/SciFiProps/Textures/GlassTankTex_Emission.png
+- Assets/Materials/Object Materials/InteriorColourSwatch.png
+- Assets/SciFiProps/Textures/Screen1Tex_Emission.png
+- Assets/SciFiProps/Textures/Screen1Tex_NormalMap.png
+- Assets/SciFiProps/Textures/GlobeTex.png
+Dependencies: []

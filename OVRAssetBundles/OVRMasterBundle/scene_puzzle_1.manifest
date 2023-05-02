@@ -1,0 +1,113 @@
+ManifestFileVersion: 0
+CRC: 1532417624
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 841e4b867436f647db7fb68707f39675
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ba2a24a89b6cd7d5964cc7f489f770c6
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 51016681b85ea4fd78acb73c0cbd3503, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 496778366d73f412e9ec583a6a271870, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1f9d3f6e86196de4aa3afb5ce52fabf1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7e07cae0ab7e34dbaad44a16473de355, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4eb83fdd03cda4c98a7de026869c0c4f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4fd7bed91ba2542ec85a85576118bf8e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 25b269a06fb674e5499f4dd3b1e98270, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a86f533fd9917dd4da8601e9eb542c96, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: decd02163827e44359e2d23139208e76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d4a3d2387319a43a094535bcc6d3d545, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 120
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+- Class: 220
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 258
+  Script: {instanceID: 0}
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/Puzzle_1.unity
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_blend0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_exr0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_lighting0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat1
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_png0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_prefab0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_resources
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_wav0

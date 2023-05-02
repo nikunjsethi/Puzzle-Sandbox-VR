@@ -1,0 +1,161 @@
+ManifestFileVersion: 0
+CRC: 4291197808
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 89fafb9dfe16d6fefb21e6b39e55a9b9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a4bace82d4250f6dfec4d051ac0a11cb
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 84
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 56032097b1ab3a540b3349af62f82310, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ecd1062ecb075db4a83f03b03ba8100d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 561fe8366de5e7d4fae882c491e3d7dc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 99b4a737903b82a43bb95804a2149147, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1f9d3f6e86196de4aa3afb5ce52fabf1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b47856a33046ce40862a2fddb86623b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5178bc8574ce2bf4388e787a2e2af326, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3861555276e1a07489d3c0971e091e46, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f892af86578f82443a9682973148029a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: be03376874d192a46a48676cddc87440, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6937544d08e2ba34da6ff4ab90cbfd84, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0794ab1bdd98af9488788bde1ac34f40, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.AvatarLODManager/Debug
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarManager/SkinnerSupport
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.ActivateEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.DeactivateEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.HoverEnterEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.HoverExitEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.SelectEnterEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.SelectExitEvent
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.XRInteractableEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+Assets:
+- Assets/Prefabs/TeleportBack.prefab
+- Assets/Prefabs/DomeHUB.prefab
+- Assets/Oculus/Avatar2/Example/Common/Prefabs/Rendering/AVATAR_LOD_DEBUG_CANVAS.prefab
+- Assets/Prefabs/Right Hand Presence.prefab
+- Assets/SciFiProps/Prefabs/Globe.prefab
+- Assets/Prefabs/Mirror_Square_Black.prefab
+- Assets/Prefabs/VRTable.prefab
+- Assets/Oculus/Avatar2/Example/Common/Prefabs/AvatarSdkManagerHorizon.prefab
+- Assets/Models/Oculus Hands/Prefabs/Custom Right Hand Model.prefab
+- Assets/Prefabs/ButtonSetup.prefab
+- Assets/Oculus/Avatar2/Example/Common/Prefabs/AvatarSdkManagerBase.prefab
+- Assets/Prefabs/Left Hand Presence.prefab
+- Assets/Models/Oculus Hands/Prefabs/Custom Left Hand Model.prefab
+- Assets/Oculus/VR/Prefabs/OVRCameraRig.prefab
+- Assets/SciFiProps/Prefabs/Kiosk.prefab
+- Assets/SciFiProps/Prefabs/GlassTank.prefab
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_asset0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_controller0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_fbx0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_ogg0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_rendertexture0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0

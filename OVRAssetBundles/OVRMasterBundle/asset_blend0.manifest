@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 2471396987
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 86785320630d3dc1fbef9f4cf72ced07
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 81fc4833398717ae320ec5bd08c661f4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Models/Puzzle1/LEVELPUZZLE.blend
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat1
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0

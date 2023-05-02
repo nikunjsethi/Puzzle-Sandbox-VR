@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3129506791
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 72c60ffb8e3d922a2ce1cd1819d03159
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 723d7b972e72461205a935bff5e6bf42
+HashAppended: 0
+ClassTypes:
+- Class: 84
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Materials/Object Materials/Mirror_Texture_Black.renderTexture
+Dependencies: []

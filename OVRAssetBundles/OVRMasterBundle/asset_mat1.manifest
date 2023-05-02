@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1897267920
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e954e7e010dcb5a5cdb9e4b688bad468
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1397ad235555a4f37791d5b3ff19e7a7
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Materials/Puzzle#1/Globe.mat
+- Assets/Materials/Puzzle#1/SymbolHolder.mat
+- Assets/Materials/Puzzle#1/Display.mat
+- Assets/Materials/Puzzle#1/LaserBot.mat
+- Assets/Materials/Puzzle#1/Symbol0.mat
+- Assets/Materials/Puzzle#1/Symbol1.mat
+- Assets/Materials/Puzzle#1/Platforms.mat
+- Assets/Materials/Puzzle#1/Floor.mat
+- Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
+- Assets/Materials/Puzzle#1/Door.mat
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0

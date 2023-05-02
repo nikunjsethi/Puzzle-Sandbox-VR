@@ -1,0 +1,56 @@
+ManifestFileVersion: 0
+CRC: 2569647530
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f65eeae044da193e729841e7612cdbeb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8b37c7c0463d40f96e6fb301cc47896e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SciFiProps/Models/Screen.fbx
+- Assets/Models/Oculus Hands/Animations/r_hand_fist_anim.fbx
+- Assets/Prefabs/Cube.fbx
+- Assets/Models/Mirror_B_2.fbx
+- Assets/SciFiProps/Models/GlassTank.fbx
+- Assets/SciFiProps/Models/GlobeBase.fbx
+- Assets/Models/Oculus Hands/Models/r_hand_skeletal_lowres.fbx
+- Assets/Models/VRTable.fbx
+- Assets/Models/DomeHUB.fbx
+- Assets/Models/Oculus Hands/Animations/r_hand_pinch_anim.fbx
+- Assets/Models/Oculus Hands/Animations/l_hand_pinch_anim.fbx
+- Assets/SciFiProps/Models/BarrelCollider.fbx
+- Assets/Models/Oculus Hands/Animations/l_hand_default_anim.fbx
+- Assets/Models/Oculus Hands/Animations/r_hand_default_anim.fbx
+- Assets/Models/Oculus Hands/Animations/l_hand_fist_anim.fbx
+- Assets/Models/Tables.fbx
+- Assets/SciFiProps/Models/GlobeSphere.fbx
+- Assets/Models/Oculus Hands/Models/l_hand_skeletal_lowres.fbx
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0

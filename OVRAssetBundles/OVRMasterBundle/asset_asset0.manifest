@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 3205054578
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 62d38e10b4edc0a8df931aeba971897d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 09f1b47330578602eaca5cb42cf2cefd
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3861555276e1a07489d3c0971e091e46, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 156
+  Script: {instanceID: 0}
+- Class: 1953259897
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarMaterialExtensionConfig
+Assets:
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonTexturedConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonHairConfiguration.asset
+- Assets/New Terrain.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonSubMeshConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonLeftEyeConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonSolidConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonVertexConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonRightEyeConfiguration.asset
+- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonSkinConfiguration.asset
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_terrainlayer0

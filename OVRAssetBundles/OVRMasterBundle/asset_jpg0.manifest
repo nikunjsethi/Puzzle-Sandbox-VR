@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 441534270
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1de5806598def414c3999a080e5e37c1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Terrain_layers/Dark mountain texture sep.jpg
+- Assets/Terrain_layers/Summer_grass.jpg
+Dependencies: []

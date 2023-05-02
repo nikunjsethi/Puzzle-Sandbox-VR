@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2422725188
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 29e113588a7ae258726417a0ef230933
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fdf6c57a251b9f6ec27bdd2fe01b033c
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Animations/Left Hand Animator.controller
+- Assets/Animations/Right Hand Animator.controller
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_fbx0

@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2460823960
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 080996686ac8ae76290d49ab8a35222e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0b1b996afefcdb43727f3042384e65d2
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 1953259897
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Terrain_layers/mountain_layer.terrainlayer
+- Assets/Terrain_layers/Grass.terrainlayer
+Dependencies:
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_jpg0

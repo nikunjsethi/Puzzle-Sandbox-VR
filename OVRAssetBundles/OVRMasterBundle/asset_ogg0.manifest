@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2208598995
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9b62c0ab0f365d095f7360ffe5da6c16
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Audio/SFX/SFX_UI_Button_1.ogg
+Dependencies: []
