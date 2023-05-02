@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3532035269
+CRC: 3408416437
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3de75ad1acce2a94dd9d11ae55aa4a72
+    Hash: ac30ca152b20d0c670a21b2b1d40f30e
   TypeTreeHash:
     serializedVersion: 2
     Hash: f83f48548c82bfd677af335e12d239bb
@@ -56,5 +56,4 @@ Assets:
 - Assets/Scenes/TestTeleporter.unity
 Dependencies:
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
-- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat1
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_prefab0

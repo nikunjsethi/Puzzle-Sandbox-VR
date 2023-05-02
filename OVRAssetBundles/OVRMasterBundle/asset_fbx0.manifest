@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2569647530
+CRC: 1500359427
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f65eeae044da193e729841e7612cdbeb
+    Hash: d7252bf629b3538972554d90bc2b6734
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8b37c7c0463d40f96e6fb301cc47896e
@@ -36,7 +36,6 @@ Assets:
 - Assets/SciFiProps/Models/Screen.fbx
 - Assets/Models/Oculus Hands/Animations/r_hand_fist_anim.fbx
 - Assets/Prefabs/Cube.fbx
-- Assets/Models/Mirror_B_2.fbx
 - Assets/SciFiProps/Models/GlassTank.fbx
 - Assets/SciFiProps/Models/GlobeBase.fbx
 - Assets/Models/Oculus Hands/Models/r_hand_skeletal_lowres.fbx
@@ -53,4 +52,3 @@ Assets:
 - Assets/Models/Oculus Hands/Models/l_hand_skeletal_lowres.fbx
 Dependencies:
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
-- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0

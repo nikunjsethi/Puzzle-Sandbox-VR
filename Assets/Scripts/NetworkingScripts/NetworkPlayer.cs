@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+//using UnityEngine.XR;
 using Photon.Pun;
-using UnityEngine.XR.Interaction.Toolkit;
+//using UnityEngine.XR.Interaction.Toolkit;
 using Unity.XR.CoreUtils;
-using TMPro;
+//using TMPro;
+using System;
+using Unity.VisualScripting;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class NetworkPlayer : MonoBehaviour
 
    // public TextMeshProUGUI playerCount;
     public NetworkManager networkManager;
-
+    public NetworkAvatar networkAvatarScript;
 
     private void Awake()
     {
@@ -33,6 +35,10 @@ public class NetworkPlayer : MonoBehaviour
             //playerCount = GameObject.Find("Count").GetComponent<TextMeshProUGUI>();
             networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         }
+
+        NetworkAvatar networkAvatarScript = gameObject.GetComponentInChildren<NetworkAvatar>();
+        //networkAvatarScript.ConfigureAvatarEntity(pv);
+        //networkAvatarScript.LoadUserFromPhotonView();
     }
 
     // Start is called before the first frame update
@@ -80,7 +86,7 @@ public class NetworkPlayer : MonoBehaviour
     {
         if (PhotonNetwork.IsConnected && pv.IsMine)
         {
-            int randomNumber = Random.Range(0, cubeDisable.Count);
+            int randomNumber = UnityEngine.Random.Range(0, cubeDisable.Count);
             Debug.Log("Randon value : " + randomNumber);
             PhotonNetwork.Destroy(cubeDisable[randomNumber]);
             cubeDisable.RemoveAt(randomNumber);
@@ -108,4 +114,5 @@ public class NetworkPlayer : MonoBehaviour
         target.position = rigTransform.position;
         target.rotation = rigTransform.rotation;
     }
+    
 }

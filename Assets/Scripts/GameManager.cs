@@ -10,7 +10,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GameManager : MonoBehaviour
 {
     // constant values used by this script
-    private const string MAIN_SCENE_NAME = "Jim_Main_Avatar_Test";// Main";
+    private const string MAIN_SCENE_NAME = "Main";// "Jim_Main_Avatar_Test";
     private const int COUNTDOWN_TIME = 5;                       // number of seconds to countdown
 
     // serialized fields available in the editor for use in this script

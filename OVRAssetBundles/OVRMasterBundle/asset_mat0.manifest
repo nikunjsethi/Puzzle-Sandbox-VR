@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4042010564
+CRC: 2610000151
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3dbcb2fa6ab9dcd3547c07a7d529fd00
+    Hash: a982f2c84c8b7b6a546f864d0775718b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 49b21f629914b89de194a6d49b908f65
+    Hash: f9f3d136959ac0e7043e721e899342fb
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -15,43 +15,40 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 84
-  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Materials/Hub/main_box_sides.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonSkinMaterial.mat
 - Assets/Models/Materials/Glow.mat
-- Assets/Materials/Object Materials/Material_Mirror_Black.mat
+- Assets/Materials/Puzzle#1/Globe.mat
 - Assets/SciFiProps/Material/GlassTankMat.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonSolidMaterial.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonTexturedMaterial.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonHairMaterial.mat
 - Assets/SciFiProps/Material/GlobesphereMat.mat
+- Assets/Materials/Hub/HUB_Glass.mat
 - Assets/SciFiProps/Material/GlassMat.mat
 - Assets/Materials/Hub/04 - Default.mat
-- Assets/Materials/Hub/HUB_Glass.mat
 - Assets/SciFiProps/Material/WireMat.mat
 - Assets/Materials/DoorCube.mat
 - Assets/Materials/Hub/Hub_floor.mat
 - Packages/com.unity.render-pipelines.universal/Runtime/Materials/TerrainLit.mat
-- Assets/Materials/Object Materials/Material_Main.mat
+- Assets/Materials/Puzzle#1/SymbolHolder.mat
+- Assets/Materials/Puzzle#1/Display.mat
+- Assets/Materials/Puzzle#1/LaserBot.mat
 - Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Racing Kit/Models/Materials/red.mat
+- Assets/Materials/Puzzle#1/Symbol0.mat
 - Assets/Materials/Cube.mat
 - Assets/Prefabs/Materials/box.mat
 - Assets/Materials/Hub/white_walls.mat
 - Assets/Materials/Hub/03 - Default.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonLeftEyeMaterial.mat
+- Assets/Materials/Puzzle#1/Symbol1.mat
 - Assets/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.mat
+- Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
 - Assets/Models/Materials/Tables.mat
-- Assets/Oculus/Avatar2/Example/Common/Shaders/Configurations/Horizon/HorizonRightEyeMaterial.mat
+- Assets/Materials/Puzzle#1/Door.mat
 - Assets/Materials/Hub/Hub_frames.mat
 - Assets/Materials/Hub/Sand.mat
 - Assets/SciFiProps/Material/Screen1Mat.mat
 - Assets/Models/Oculus Hands/Materials/Hands_solid.mat
 Dependencies:
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_png0
-- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_rendertexture0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shader0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_shadergraph0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_tga0

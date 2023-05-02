@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: fbffdcbd04e7331439ab256a0f73cabe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jim_Main_Avatar_Test.unity
     guid: 45051998e67e0044ea7bfe7d7e93f28e
   - enabled: 1
@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzle_1.unity
     guid: 441488d0573f04ab1ba1b36c28c91ad2
-  - enabled: 0
-    path: Assets/Oculus/Avatar2/Example/Scenes/SimpleExample.unity
-    guid: 9d651860700ec4f64899b27f1cd59359
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c3a63f5e54b199b44a8a0c2561c86e79, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e37451a060c0bc14b9ff3cf696a186b0, type: 2}

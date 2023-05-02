@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1532417624
+CRC: 836387962
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 841e4b867436f647db7fb68707f39675
+    Hash: e262bef7996c345fab6c990c9de35b3e
   TypeTreeHash:
     serializedVersion: 2
     Hash: ba2a24a89b6cd7d5964cc7f489f770c6
@@ -106,6 +106,7 @@ Dependencies:
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_blend0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_exr0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_lighting0
+- C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_mat1
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_png0
 - C:/Development/_T2_VirtualReality/PuzzleSandbox/OVRAssetBundles/OVRMasterBundle/asset_prefab0

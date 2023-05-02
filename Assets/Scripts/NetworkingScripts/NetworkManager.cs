@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Oculus.Platform;
 using TMPro;
+using System;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -12,20 +14,59 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static int MAX_NUM_PLAYERS = 10;
 
     // serialized fields for this script
+    //[SerializeField] public GameObject avatarEntity;
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject joinRoomButton;
     [SerializeField] GameObject teleportMenu;
     [SerializeField] GameObject teleportButton;
     [SerializeField] TMP_Text statusBox;
-    private PhotonView pv;
+
     // public variables used by other scripts
     public int numCubesToReplace = 0;
     public bool playerInLevel = false;
+    public ulong m_userId;
+
+    // private variables
+    private PhotonView pv;
+
+    // may need to make this a singleton....
+    // adding code to get the user id to share with the photon network, thanks to Meta Avatar SDK with Photon in unity
+    // https://www.youtube.com/watch?v=PuKr3ZVloBo&t=13s
+    //Singleton implementation
+    /*private static NetworkManager m_instance;
+    public static NetworkManager Instance
+    {
+        get
+        {
+            return m_instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (m_instance == null)
+        {
+            m_instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }*/
 
     void Start()
     {
-        pv = GetComponent<PhotonView>();
-        ConnectToServer();
+        // adding code to get the user id to share with the photon network, thanks to Meta Avatar SDK with Photon in unity
+        // https://www.youtube.com/watch?v=PuKr3ZVloBo&t=13s
+        StartCoroutine(SetUserIdFromLoggedInUser());
+        StartCoroutine(ConnectToPhotonOnceUserIsFound());
+
+        // this needs to be moved to after pressing the button? - Moved to NetworkPlayerInstantiator.cs
+        //StartCoroutine(InstantiateNetworkedAvatarOnceInRoom());
+
+        // moved to the coroutine - ConnectToPhotonOnceUserIsFound
+        //pv = GetComponent<PhotonView>();
+        //ConnectToServer();
     }
 
     private void Update()
@@ -39,8 +80,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 teleportButton.SetActive(true);
                 pv.RPC("ActiveTeleport", RpcTarget.AllBuffered);
             }
-        }
-        
+        }        
         
     }
 
@@ -138,4 +178,64 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         return playerTeleportPos;
 
     } // end getPlayerIDZeroBased
+
+    // adding code to get the user id to share with the photon network, thanks to Meta Avatar SDK with Photon in unity
+    // https://www.youtube.com/watch?v=PuKr3ZVloBo&t=13s
+    IEnumerator SetUserIdFromLoggedInUser()
+    {
+        if (OvrPlatformInit.status == OvrPlatformInitStatus.NotStarted)
+        {
+            OvrPlatformInit.InitializeOvrPlatform();
+        }
+
+        while (OvrPlatformInit.status != OvrPlatformInitStatus.Succeeded)
+        {
+            if (OvrPlatformInit.status == OvrPlatformInitStatus.Failed)
+            {
+                Debug.LogError("OVR Platform failed to initialise");
+                statusBox.text = "OVR Platform failed to initialise";
+                yield break;
+            }
+            yield return null;
+        }
+
+        Users.GetLoggedInUser().OnComplete(message =>
+        {
+            if (message.IsError)
+            {
+                Debug.LogError("Getting Logged in user error " + message.GetError());
+            }
+            else
+            {
+                m_userId = message.Data.ID;
+            }
+        });
+    }
+
+    // adding code to get the user id to share with the photon network, thanks to Meta Avatar SDK with Photon in unity
+    // https://www.youtube.com/watch?v=PuKr3ZVloBo&t=13s
+    IEnumerator ConnectToPhotonOnceUserIsFound()
+    {
+        while (m_userId == 0)
+        {
+            Debug.Log("Waiting for User id to be set before connecting to room");
+            yield return null;
+        }
+
+        pv = GetComponent<PhotonView>();
+        ConnectToServer(); 
+        //ConnectToPhotonRoom();
+    }
+
+    // adding code to get the user id to share with the photon network, thanks to Meta Avatar SDK with Photon in unity
+    // https://www.youtube.com/watch?v=PuKr3ZVloBo&t=13s - not needed in our setup?
+    /*IEnumerator InstantiateNetworkedAvatarOnceInRoom()
+    {
+        while (PhotonNetwork.InRoom == false)
+        {
+            Debug.Log("Waiting to be in room before intantiating avatar");
+            yield return null;
+        }
+        InstantiateNetworkedAvatar();
+    }*/
 }

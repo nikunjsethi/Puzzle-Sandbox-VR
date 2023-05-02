@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1645474298
+CRC: 860464590
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4ff59e32490e7cebde53cbe496bf73a2
+    Hash: 122242f5ebd264cf72961bf827b6e1f6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3af9cadb6469e9c89ab9782ebabd7cc0
+    Hash: 5bb67a07db924e54abefb14e02349b8a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -133,6 +133,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fd08475b23aa548b7b9d28397d430b32, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3bd87075b5fc7c845904260885ad4219, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 124
@@ -172,6 +174,32 @@ ClassTypes:
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: MouseLookHelper
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityCreateInfo
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityFeatures
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityFilters
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityHighQualityFlags
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityLODFlags
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityManifestationFlags
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntitySubMeshInclusionFlags
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.CAPI/ovrAvatar2EntityViewFlags
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarEntity/AvatarLoadFailedEvent
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarEntity/AvatarStateEvent
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarEntity/DebugDrawing
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarEntity/EntityLoadingStateEvent
+- AssemblyName: Oculus.AvatarSDK2
+  ClassName: Oculus.Avatar2.OvrAvatarEntity/LoadingStateEvent
 - AssemblyName: PhotonRealtime
   ClassName: Photon.Realtime.AppSettings
 - AssemblyName: PhotonUnityNetworking
